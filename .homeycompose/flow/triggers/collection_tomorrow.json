@@ -1,0 +1,18 @@
+{
+  "id": "collection_tomorrow",
+  "title": { "en": "Trash is collected tomorrow", "nl": "Afval wordt morgen opgehaald" },
+  "hint": {
+    "en": "Fires each day a collection is scheduled for tomorrow",
+    "nl": "Wordt elke dag getriggerd als er morgen een ophaling gepland is"
+  },
+  "args": [
+    { "type": "device", "name": "device", "filter": "driver_id=afval-adres" }
+  ],
+  "tokens": [
+    {
+      "name": "types",
+      "type": "string",
+      "title": { "en": "Container types", "nl": "Containertypen" }
+    }
+  ]
+}

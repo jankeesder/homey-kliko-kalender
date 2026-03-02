@@ -1,0 +1,8 @@
+{
+  "type": "boolean",
+  "title": { "en": "Collection tomorrow", "nl": "Morgen ophalen" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/trash.svg"
+}

@@ -1,0 +1,19 @@
+{
+  "pair": {
+    "search": {
+      "title": "Adres toevoegen",
+      "postcode_label": "Postcode",
+      "housenumber_label": "Huisnummer",
+      "name_label": "Naam (optioneel)",
+      "next_btn": "Volgende",
+      "validating": "Adres controleren bij Circulus...",
+      "error_required": "Vul postcode en huisnummer in.",
+      "error_not_found": "Adres niet gevonden bij Circulus."
+    }
+  },
+  "settings": {
+    "refresh_interval": {
+      "label": "Verversingsinterval"
+    }
+  }
+}

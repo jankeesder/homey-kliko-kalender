@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "title": { "en": "Types collected today", "nl": "Types vandaag" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/trash.svg"
+}

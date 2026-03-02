@@ -1,0 +1,450 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.klikokalender",
+  "version": "1.0.2",
+  "compatibility": ">=12.1.2",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Kliko Calendar",
+    "nl": "Kliko Kalender"
+  },
+  "description": {
+    "en": "Get notified which trash containers are collected today and tomorrow",
+    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd"
+  },
+  "category": "tools",
+  "tags": {
+    "en": [
+      "trash",
+      "garbage",
+      "collection",
+      "circulus",
+      "reminder",
+      "waste"
+    ],
+    "nl": [
+      "afval",
+      "container",
+      "ophaalkalender",
+      "circulus",
+      "herinnering",
+      "kliko"
+    ]
+  },
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Jan-kees de Rijke"
+  },
+  "source": "https://github.com/jankeesder/Homey/tree/main/nl.klikokalender",
+  "brandColor": "#2E7D32",
+  "flow": {
+    "triggers": [
+      {
+        "id": "collection_today",
+        "title": {
+          "en": "Trash is collected today",
+          "nl": "Afval wordt vandaag opgehaald"
+        },
+        "hint": {
+          "en": "Fires each day a collection is scheduled for today",
+          "nl": "Wordt elke dag getriggerd als er een ophaling is gepland"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=afval-adres"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "types",
+            "type": "string",
+            "title": {
+              "en": "Container types",
+              "nl": "Containertypen"
+            }
+          }
+        ]
+      },
+      {
+        "id": "collection_tomorrow",
+        "title": {
+          "en": "Trash is collected tomorrow",
+          "nl": "Afval wordt morgen opgehaald"
+        },
+        "hint": {
+          "en": "Fires each day a collection is scheduled for tomorrow",
+          "nl": "Wordt elke dag getriggerd als er morgen een ophaling gepland is"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=afval-adres"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "types",
+            "type": "string",
+            "title": {
+              "en": "Container types",
+              "nl": "Containertypen"
+            }
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "collection_type_today",
+        "title": {
+          "en": "A specific type is collected today",
+          "nl": "Een bepaald type wordt vandaag opgehaald"
+        },
+        "titleFormatted": {
+          "en": "[[type]] is collected today",
+          "nl": "[[type]] wordt vandaag opgehaald"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=afval-adres"
+          },
+          {
+            "name": "type",
+            "type": "dropdown",
+            "title": {
+              "en": "Container type",
+              "nl": "Containertype"
+            },
+            "values": [
+              {
+                "id": "GFT",
+                "label": {
+                  "en": "gft (green bin)",
+                  "nl": "gft (groene kliko)"
+                }
+              },
+              {
+                "id": "REST",
+                "label": {
+                  "en": "general waste",
+                  "nl": "restafval (zwarte kliko)"
+                }
+              },
+              {
+                "id": "PAP",
+                "label": {
+                  "en": "paper",
+                  "nl": "papier"
+                }
+              },
+              {
+                "id": "PMD",
+                "label": {
+                  "en": "pmd / plastic",
+                  "nl": "pmd/plastic"
+                }
+              },
+              {
+                "id": "ZWAKRA",
+                "label": {
+                  "en": "glass & tins",
+                  "nl": "glas & blik"
+                }
+              },
+              {
+                "id": "BESTAFR",
+                "label": {
+                  "en": "best afval",
+                  "nl": "best afval"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "collection_type_tomorrow",
+        "title": {
+          "en": "A specific type is collected tomorrow",
+          "nl": "Een bepaald type wordt morgen opgehaald"
+        },
+        "titleFormatted": {
+          "en": "[[type]] is collected tomorrow",
+          "nl": "[[type]] wordt morgen opgehaald"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=afval-adres"
+          },
+          {
+            "name": "type",
+            "type": "dropdown",
+            "title": {
+              "en": "Container type",
+              "nl": "Containertype"
+            },
+            "values": [
+              {
+                "id": "GFT",
+                "label": {
+                  "en": "gft (green bin)",
+                  "nl": "gft (groene kliko)"
+                }
+              },
+              {
+                "id": "REST",
+                "label": {
+                  "en": "general waste",
+                  "nl": "restafval (zwarte kliko)"
+                }
+              },
+              {
+                "id": "PAP",
+                "label": {
+                  "en": "paper",
+                  "nl": "papier"
+                }
+              },
+              {
+                "id": "PMD",
+                "label": {
+                  "en": "pmd / plastic",
+                  "nl": "pmd/plastic"
+                }
+              },
+              {
+                "id": "ZWAKRA",
+                "label": {
+                  "en": "glass & tins",
+                  "nl": "glas & blik"
+                }
+              },
+              {
+                "id": "BESTAFR",
+                "label": {
+                  "en": "best afval",
+                  "nl": "best afval"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "refresh_calendar",
+        "title": {
+          "en": "Refresh calendar now",
+          "nl": "Ververs kalender nu"
+        },
+        "hint": {
+          "en": "Force an immediate update from the Circulus API",
+          "nl": "Forceer een directe update van de Circulus API"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=afval-adres"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Kliko Address",
+        "nl": "Kliko adres"
+      },
+      "class": "other",
+      "capabilities": [
+        "collection_today",
+        "collection_tomorrow",
+        "collection_types_today",
+        "collection_types_tomorrow"
+      ],
+      "pair": [
+        {
+          "id": "search"
+        },
+        {
+          "id": "confirm",
+          "navigation": {
+            "prev": "search",
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Address",
+            "nl": "Adres"
+          },
+          "children": [
+            {
+              "id": "postcode",
+              "type": "text",
+              "label": {
+                "en": "Postal code",
+                "nl": "Postcode"
+              },
+              "value": ""
+            },
+            {
+              "id": "huisnummer",
+              "type": "text",
+              "label": {
+                "en": "House number",
+                "nl": "Huisnummer"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Refresh",
+            "nl": "Verversing"
+          },
+          "children": [
+            {
+              "id": "refresh_interval",
+              "type": "dropdown",
+              "label": {
+                "en": "Refresh interval",
+                "nl": "Verversingsinterval"
+              },
+              "value": "86400",
+              "values": [
+                {
+                  "id": "21600",
+                  "label": {
+                    "en": "Every 6 hours",
+                    "nl": "Elke 6 uur"
+                  }
+                },
+                {
+                  "id": "43200",
+                  "label": {
+                    "en": "Every 12 hours",
+                    "nl": "Elke 12 uur"
+                  }
+                },
+                {
+                  "id": "86400",
+                  "label": {
+                    "en": "Once a day",
+                    "nl": "Eens per dag"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "images": {
+        "small": "/drivers/afval-adres/assets/images/small.png",
+        "large": "/drivers/afval-adres/assets/images/large.png",
+        "xlarge": "/drivers/afval-adres/assets/images/xlarge.png"
+      },
+      "id": "afval-adres"
+    }
+  ],
+  "widgets": {
+    "afvalkalender": {
+      "name": {
+        "en": "Kliko Calendar",
+        "nl": "Kliko Kalender"
+      },
+      "settings": [],
+      "api": {
+        "getDevices": {
+          "method": "GET",
+          "path": "/devices"
+        },
+        "getCalendar": {
+          "method": "GET",
+          "path": "/calendar"
+        }
+      },
+      "id": "afvalkalender"
+    }
+  },
+  "capabilities": {
+    "collection_today": {
+      "type": "boolean",
+      "title": {
+        "en": "Collection today",
+        "nl": "Vandaag ophalen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/trash.svg"
+    },
+    "collection_tomorrow": {
+      "type": "boolean",
+      "title": {
+        "en": "Collection tomorrow",
+        "nl": "Morgen ophalen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/trash.svg"
+    },
+    "collection_types_today": {
+      "type": "string",
+      "title": {
+        "en": "Types collected today",
+        "nl": "Types vandaag"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/trash.svg"
+    },
+    "collection_types_tomorrow": {
+      "type": "string",
+      "title": {
+        "en": "Types collected tomorrow",
+        "nl": "Types morgen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/trash.svg"
+    }
+  }
+}

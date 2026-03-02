@@ -1,0 +1,24 @@
+{
+  "id": "collection_type_tomorrow",
+  "title": { "en": "A specific type is collected tomorrow", "nl": "Een bepaald type wordt morgen opgehaald" },
+  "titleFormatted": {
+    "en": "[[type]] is collected tomorrow",
+    "nl": "[[type]] wordt morgen opgehaald"
+  },
+  "args": [
+    { "type": "device", "name": "device", "filter": "driver_id=afval-adres" },
+    {
+      "name": "type",
+      "type": "dropdown",
+      "title": { "en": "Container type", "nl": "Containertype" },
+      "values": [
+        { "id": "GFT",     "label": { "en": "gft (green bin)",        "nl": "gft (groene kliko)" } },
+        { "id": "REST",    "label": { "en": "general waste",           "nl": "restafval (zwarte kliko)" } },
+        { "id": "PAP",     "label": { "en": "paper",                   "nl": "papier" } },
+        { "id": "PMD",     "label": { "en": "pmd / plastic",           "nl": "pmd/plastic" } },
+        { "id": "ZWAKRA",  "label": { "en": "glass & tins",            "nl": "glas & blik" } },
+        { "id": "BESTAFR", "label": { "en": "best afval",              "nl": "best afval" } }
+      ]
+    }
+  ]
+}

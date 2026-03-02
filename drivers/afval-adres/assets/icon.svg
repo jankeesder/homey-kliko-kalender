@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960">
+  <!-- Hinge tab top-right of lid -->
+  <rect x="652" y="95" width="46" height="50" rx="13" fill="#000000"/>
+  <!-- Lid (slightly wider than body) -->
+  <rect x="300" y="140" width="360" height="98" rx="30" fill="#000000"/>
+  <!-- Body: h/w ratio ~1.8 (310w × 555h) -->
+  <rect x="325" y="232" width="310" height="555" rx="18" fill="#000000"/>
+  <!-- Lid rail slots (white cutouts at top of body) -->
+  <rect x="412" y="232" width="24" height="88" fill="#ffffff"/>
+  <rect x="504" y="232" width="24" height="88" fill="#ffffff"/>
+  <!-- Wheel: bottom-right (hinge side), flush with body bottom, sticks out right -->
+  <circle cx="618" cy="712" r="75" fill="#000000"/>
+</svg>

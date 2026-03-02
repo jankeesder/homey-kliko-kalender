@@ -1,0 +1,8 @@
+{
+  "type": "boolean",
+  "title": { "en": "Collection today", "nl": "Vandaag ophalen" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/trash.svg"
+}

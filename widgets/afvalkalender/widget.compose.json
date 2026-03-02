@@ -1,0 +1,14 @@
+{
+  "name": { "en": "Kliko Calendar", "nl": "Kliko Kalender" },
+  "settings": [],
+  "api": {
+    "getDevices": {
+      "method": "GET",
+      "path": "/devices"
+    },
+    "getCalendar": {
+      "method": "GET",
+      "path": "/calendar"
+    }
+  }
+}

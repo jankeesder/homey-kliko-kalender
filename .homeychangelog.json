@@ -1,0 +1,13 @@
+{
+  "1.0.1": {
+    "en": "Add GitHub source reference",
+    "nl": "GitHub bronverwijzing toegevoegd"
+  },
+  "1.0.0": {
+    "en": "First release: 7-day trash collection calendar for Circulus addresses with widget and Flow support",
+    "nl": "Eerste release: 7-daagse ophaalkalender voor Circulus adressen met widget en Flow ondersteuning"
+  },
+  "1.0.2": {
+    "en": "Driver image updated to white background (App Store requirement). README now explains multi-address support and Circulus-only scope."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": { "en": "Kliko Address", "nl": "Kliko adres" },
+  "class": "other",
+  "capabilities": [
+    "collection_today",
+    "collection_tomorrow",
+    "collection_types_today",
+    "collection_types_tomorrow"
+  ],
+  "pair": [
+    { "id": "search" },
+    { "id": "confirm", "navigation": { "prev": "search", "next": "list_devices" } },
+    { "id": "list_devices", "template": "list_devices", "navigation": { "next": "add_devices" } },
+    { "id": "add_devices", "template": "add_devices" }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": { "en": "Address", "nl": "Adres" },
+      "children": [
+        {
+          "id": "postcode",
+          "type": "text",
+          "label": { "en": "Postal code", "nl": "Postcode" },
+          "value": ""
+        },
+        {
+          "id": "huisnummer",
+          "type": "text",
+          "label": { "en": "House number", "nl": "Huisnummer" },
+          "value": ""
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": { "en": "Refresh", "nl": "Verversing" },
+      "children": [
+        {
+          "id": "refresh_interval",
+          "type": "dropdown",
+          "label": { "en": "Refresh interval", "nl": "Verversingsinterval" },
+          "value": "86400",
+          "values": [
+            { "id": "21600",  "label": { "en": "Every 6 hours",  "nl": "Elke 6 uur" } },
+            { "id": "43200",  "label": { "en": "Every 12 hours", "nl": "Elke 12 uur" } },
+            { "id": "86400",  "label": { "en": "Once a day",     "nl": "Eens per dag" } }
+          ]
+        }
+      ]
+    }
+  ],
+  "images": {
+    "small":  "/drivers/afval-adres/assets/images/small.png",
+    "large":  "/drivers/afval-adres/assets/images/large.png",
+    "xlarge": "/drivers/afval-adres/assets/images/xlarge.png"
+  }
+}

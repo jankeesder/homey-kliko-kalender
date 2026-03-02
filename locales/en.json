@@ -1,0 +1,19 @@
+{
+  "pair": {
+    "search": {
+      "title": "Add address",
+      "postcode_label": "Postal code",
+      "housenumber_label": "House number",
+      "name_label": "Name (optional)",
+      "next_btn": "Next",
+      "validating": "Checking address with Circulus...",
+      "error_required": "Please fill in postal code and house number.",
+      "error_not_found": "Address not found at Circulus."
+    }
+  },
+  "settings": {
+    "refresh_interval": {
+      "label": "Refresh interval"
+    }
+  }
+}
