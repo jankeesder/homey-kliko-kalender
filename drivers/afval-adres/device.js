@@ -1,13 +1,8 @@
 'use strict';
 
-const Homey = require('homey');
-const {
-  registerAddress,
-  fetchCalendar,
-  getCollectionsForDate,
-  formatTypesList,
-  toDateString,
-} = require('../../lib/circulus-api');
+const Homey        = require('homey');
+const circulusApi   = require('../../lib/circulus-api');
+const afvalwijzerApi = require('../../lib/afvalwijzer-api');
 
 class AfvalAdresDevice extends Homey.Device {
 
@@ -26,11 +21,11 @@ class AfvalAdresDevice extends Homey.Device {
     }
   }
 
-  // --- Public (called by Flow action and internally) ---
-
   async refreshData() {
+    const provider   = this.getSetting('provider') || 'circulus';
     const postcode   = this.getSetting('postcode');
     const huisnummer = this.getSetting('huisnummer');
+    const toevoeging = this.getSetting('toevoeging') || '';
 
     if (!postcode || !huisnummer) {
       this.error('Missing postcode or huisnummer setting');
@@ -38,43 +33,47 @@ class AfvalAdresDevice extends Homey.Device {
     }
 
     try {
-      const session  = await registerAddress(postcode, huisnummer);
-      const calendar = await fetchCalendar(session, 7);
-
+      let calendar;
+      if (provider === 'afvalwijzer') {
+        calendar = await afvalwijzerApi.fetchCalendar(postcode, huisnummer, toevoeging, 7);
+      } else {
+        const session = await circulusApi.registerAddress(postcode, huisnummer);
+        calendar = await circulusApi.fetchCalendar(session, 7);
+      }
       await this.setStoreValue('calendar', calendar);
-      await this._updateCapabilities(calendar);
-      this.log(`Calendar refreshed for ${this.getName()}`);
+      await this._updateCapabilities(calendar, provider);
+      this.log(`Calendar refreshed for ${this.getName()} (${provider})`);
     } catch (err) {
       this.error(`refreshData failed for ${this.getName()}: ${err.message}`);
     }
   }
 
-  // --- Private ---
-
-  async _updateCapabilities(calendar) {
+  async _updateCapabilities(calendar, provider) {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    const todayStr    = toDateString(new Date());
-    const tomorrowStr = toDateString(tomorrow);
+    const todayStr    = circulusApi.toDateString(new Date());
+    const tomorrowStr = circulusApi.toDateString(tomorrow);
 
-    const todayTypes    = getCollectionsForDate(calendar, todayStr);
-    const tomorrowTypes = getCollectionsForDate(calendar, tomorrowStr);
+    const todayTypes    = circulusApi.getCollectionsForDate(calendar, todayStr);
+    const tomorrowTypes = circulusApi.getCollectionsForDate(calendar, tomorrowStr);
+
+    const fmt = provider === 'afvalwijzer' ? afvalwijzerApi.formatTypesList : circulusApi.formatTypesList;
 
     await this.setCapabilityValue('collection_today',          todayTypes.length > 0);
     await this.setCapabilityValue('collection_tomorrow',       tomorrowTypes.length > 0);
-    await this.setCapabilityValue('collection_types_today',    formatTypesList(todayTypes));
-    await this.setCapabilityValue('collection_types_tomorrow', formatTypesList(tomorrowTypes));
+    await this.setCapabilityValue('collection_types_today',    fmt(todayTypes));
+    await this.setCapabilityValue('collection_types_tomorrow', fmt(tomorrowTypes));
 
     if (todayTypes.length > 0) {
       await this.homey.flow.getDeviceTriggerCard('collection_today')
-        .trigger(this, { types: formatTypesList(todayTypes) })
+        .trigger(this, { types: fmt(todayTypes) })
         .catch((err) => this.error('Trigger collection_today failed:', err.message));
     }
 
     if (tomorrowTypes.length > 0) {
       await this.homey.flow.getDeviceTriggerCard('collection_tomorrow')
-        .trigger(this, { types: formatTypesList(tomorrowTypes) })
+        .trigger(this, { types: fmt(tomorrowTypes) })
         .catch((err) => this.error('Trigger collection_tomorrow failed:', err.message));
     }
   }
@@ -83,11 +82,7 @@ class AfvalAdresDevice extends Homey.Device {
     if (this._refreshTimer) this.homey.clearTimeout(this._refreshTimer);
     const ms = intervalMs ?? Number(this.getSetting('refresh_interval') || 86400) * 1000;
     this._refreshTimer = this.homey.setTimeout(async () => {
-      try {
-        await this.refreshData();
-      } catch (err) {
-        this.error('Scheduled refresh failed:', err.message);
-      }
+      try { await this.refreshData(); } catch (err) { this.error('Scheduled refresh failed:', err.message); }
       this._scheduleRefresh();
     }, ms);
   }
@@ -97,11 +92,12 @@ class AfvalAdresDevice extends Homey.Device {
     const now      = new Date();
     const midnight = new Date(now);
     midnight.setDate(midnight.getDate() + 1);
-    midnight.setHours(0, 1, 0, 0); // 00:01 next day
+    midnight.setHours(0, 1, 0, 0);
 
     this._midnightTimer = this.homey.setTimeout(async () => {
       const calendar = this.getStoreValue('calendar') || {};
-      await this._updateCapabilities(calendar);
+      const provider = this.getSetting('provider') || 'circulus';
+      await this._updateCapabilities(calendar, provider);
       this._scheduleMidnight();
     }, midnight - now);
   }
