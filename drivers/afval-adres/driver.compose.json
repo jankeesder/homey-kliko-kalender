@@ -25,7 +25,7 @@
           "value": "circulus",
           "values": [
             { "id": "circulus",    "label": { "en": "Circulus (Apeldoorn, Deventer e.o.)", "nl": "Circulus (Apeldoorn, Deventer e.o.)" } },
-            { "id": "afvalwijzer", "label": { "en": "AfvalWijzer (Groningen e.o.)",         "nl": "AfvalWijzer (Groningen e.o.)" } }
+            { "id": "afvalwijzer", "label": { "en": "Groningen (Burgerportaal)",               "nl": "Groningen (Burgerportaal)" } }
           ]
         }
       ]
@@ -50,7 +50,7 @@
           "id": "toevoeging",
           "type": "text",
           "label": { "en": "House number addition", "nl": "Toevoeging" },
-          "hint": { "en": "Optional, e.g. A or B (AfvalWijzer only)", "nl": "Optioneel, bijv. A of B (alleen AfvalWijzer)" },
+          "hint": { "en": "Optional, e.g. A or B (Groningen only)", "nl": "Optioneel, bijv. A of B (alleen Groningen)" },
           "value": ""
         }
       ]

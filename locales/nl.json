@@ -9,7 +9,7 @@
       "name_label": "Naam (optioneel)",
       "next_btn": "Volgende",
       "validating_circulus": "Adres controleren bij Circulus...",
-      "validating_afvalwijzer": "Adres controleren bij AfvalWijzer...",
+      "validating_afvalwijzer": "Adres controleren bij Gemeente Groningen...",
       "error_required": "Vul postcode en huisnummer in.",
       "error_not_found": "Adres niet gevonden. Controleer postcode en huisnummer."
     }

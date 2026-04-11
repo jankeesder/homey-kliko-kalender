@@ -404,8 +404,8 @@
                 {
                   "id": "afvalwijzer",
                   "label": {
-                    "en": "AfvalWijzer (Groningen e.o.)",
-                    "nl": "AfvalWijzer (Groningen e.o.)"
+                    "en": "Groningen (Burgerportaal)",
+                    "nl": "Groningen (Burgerportaal)"
                   }
                 }
               ]
@@ -445,8 +445,8 @@
                 "nl": "Toevoeging"
               },
               "hint": {
-                "en": "Optional, e.g. A or B (AfvalWijzer only)",
-                "nl": "Optioneel, bijv. A of B (alleen AfvalWijzer)"
+                "en": "Optional, e.g. A or B (Groningen only)",
+                "nl": "Optioneel, bijv. A of B (alleen Groningen)"
               },
               "value": ""
             }
