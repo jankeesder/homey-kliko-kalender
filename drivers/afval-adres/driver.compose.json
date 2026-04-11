@@ -16,6 +16,22 @@
   "settings": [
     {
       "type": "group",
+      "label": { "en": "Provider", "nl": "Aanbieder" },
+      "children": [
+        {
+          "id": "provider",
+          "type": "dropdown",
+          "label": { "en": "Waste collection provider", "nl": "Afvalaanbieder" },
+          "value": "circulus",
+          "values": [
+            { "id": "circulus",    "label": { "en": "Circulus (Apeldoorn, Deventer e.o.)", "nl": "Circulus (Apeldoorn, Deventer e.o.)" } },
+            { "id": "afvalwijzer", "label": { "en": "AfvalWijzer (Groningen e.o.)",         "nl": "AfvalWijzer (Groningen e.o.)" } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
       "label": { "en": "Address", "nl": "Adres" },
       "children": [
         {
@@ -28,6 +44,13 @@
           "id": "huisnummer",
           "type": "text",
           "label": { "en": "House number", "nl": "Huisnummer" },
+          "value": ""
+        },
+        {
+          "id": "toevoeging",
+          "type": "text",
+          "label": { "en": "House number addition", "nl": "Toevoeging" },
+          "hint": { "en": "Optional, e.g. A or B (AfvalWijzer only)", "nl": "Optioneel, bijv. A of B (alleen AfvalWijzer)" },
           "value": ""
         }
       ]
