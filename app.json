@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.klikokalender",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "compatibility": ">=12.1.2",
   "sdk": 3,
   "platforms": [
@@ -12,8 +12,8 @@
     "nl": "Kliko Kalender"
   },
   "description": {
-    "en": "Get notified which trash containers are collected today and tomorrow",
-    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd"
+    "en": "Get notified which trash containers are collected today and tomorrow. Supports Circulus and AfvalWijzer (Groningen).",
+    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Ondersteunt Circulus en AfvalWijzer (Groningen)."
   },
   "category": "tools",
   "tags": {
@@ -22,6 +22,8 @@
       "garbage",
       "collection",
       "circulus",
+      "afvalwijzer",
+      "groningen",
       "reminder",
       "waste"
     ],
@@ -30,6 +32,8 @@
       "container",
       "ophaalkalender",
       "circulus",
+      "afvalwijzer",
+      "groningen",
       "herinnering",
       "kliko"
     ]
@@ -170,6 +174,76 @@
                   "en": "best afval",
                   "nl": "best afval"
                 }
+              },
+              {
+                "id": "gft",
+                "label": {
+                  "en": "gft (organic)",
+                  "nl": "gft (groente/fruit/tuin)"
+                }
+              },
+              {
+                "id": "restafval",
+                "label": {
+                  "en": "residual waste",
+                  "nl": "restafval"
+                }
+              },
+              {
+                "id": "papier",
+                "label": {
+                  "en": "paper (AfvalWijzer)",
+                  "nl": "papier (AfvalWijzer)"
+                }
+              },
+              {
+                "id": "pmd",
+                "label": {
+                  "en": "pmd (AfvalWijzer)",
+                  "nl": "pmd (AfvalWijzer)"
+                }
+              },
+              {
+                "id": "glas",
+                "label": {
+                  "en": "glass",
+                  "nl": "glas"
+                }
+              },
+              {
+                "id": "textiel",
+                "label": {
+                  "en": "textiles",
+                  "nl": "textiel"
+                }
+              },
+              {
+                "id": "kca",
+                "label": {
+                  "en": "chemical waste",
+                  "nl": "chemisch afval (KCA)"
+                }
+              },
+              {
+                "id": "grof",
+                "label": {
+                  "en": "bulky waste",
+                  "nl": "grof huishoudelijk afval"
+                }
+              },
+              {
+                "id": "takken",
+                "label": {
+                  "en": "branches",
+                  "nl": "takken/snoeiafval"
+                }
+              },
+              {
+                "id": "kerstbomen",
+                "label": {
+                  "en": "christmas trees",
+                  "nl": "kerstbomen"
+                }
               }
             ]
           }
@@ -240,6 +314,76 @@
                   "en": "best afval",
                   "nl": "best afval"
                 }
+              },
+              {
+                "id": "gft",
+                "label": {
+                  "en": "gft (organic)",
+                  "nl": "gft (groente/fruit/tuin)"
+                }
+              },
+              {
+                "id": "restafval",
+                "label": {
+                  "en": "residual waste",
+                  "nl": "restafval"
+                }
+              },
+              {
+                "id": "papier",
+                "label": {
+                  "en": "paper (AfvalWijzer)",
+                  "nl": "papier (AfvalWijzer)"
+                }
+              },
+              {
+                "id": "pmd",
+                "label": {
+                  "en": "pmd (AfvalWijzer)",
+                  "nl": "pmd (AfvalWijzer)"
+                }
+              },
+              {
+                "id": "glas",
+                "label": {
+                  "en": "glass",
+                  "nl": "glas"
+                }
+              },
+              {
+                "id": "textiel",
+                "label": {
+                  "en": "textiles",
+                  "nl": "textiel"
+                }
+              },
+              {
+                "id": "kca",
+                "label": {
+                  "en": "chemical waste",
+                  "nl": "chemisch afval (KCA)"
+                }
+              },
+              {
+                "id": "grof",
+                "label": {
+                  "en": "bulky waste",
+                  "nl": "grof huishoudelijk afval"
+                }
+              },
+              {
+                "id": "takken",
+                "label": {
+                  "en": "branches",
+                  "nl": "takken/snoeiafval"
+                }
+              },
+              {
+                "id": "kerstbomen",
+                "label": {
+                  "en": "christmas trees",
+                  "nl": "kerstbomen"
+                }
               }
             ]
           }
@@ -307,6 +451,40 @@
         {
           "type": "group",
           "label": {
+            "en": "Provider",
+            "nl": "Aanbieder"
+          },
+          "children": [
+            {
+              "id": "provider",
+              "type": "dropdown",
+              "label": {
+                "en": "Waste collection provider",
+                "nl": "Afvalaanbieder"
+              },
+              "value": "circulus",
+              "values": [
+                {
+                  "id": "circulus",
+                  "label": {
+                    "en": "Circulus (Apeldoorn, Deventer e.o.)",
+                    "nl": "Circulus (Apeldoorn, Deventer e.o.)"
+                  }
+                },
+                {
+                  "id": "afvalwijzer",
+                  "label": {
+                    "en": "AfvalWijzer (Groningen e.o.)",
+                    "nl": "AfvalWijzer (Groningen e.o.)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
             "en": "Address",
             "nl": "Adres"
           },
@@ -326,6 +504,19 @@
               "label": {
                 "en": "House number",
                 "nl": "Huisnummer"
+              },
+              "value": ""
+            },
+            {
+              "id": "toevoeging",
+              "type": "text",
+              "label": {
+                "en": "House number addition",
+                "nl": "Toevoeging"
+              },
+              "hint": {
+                "en": "Optional, e.g. A or B (AfvalWijzer only)",
+                "nl": "Optioneel, bijv. A of B (alleen AfvalWijzer)"
               },
               "value": ""
             }

@@ -17,7 +17,17 @@
         { "id": "PAP",     "label": { "en": "paper",                   "nl": "papier" } },
         { "id": "PMD",     "label": { "en": "pmd / plastic",           "nl": "pmd/plastic" } },
         { "id": "ZWAKRA",  "label": { "en": "glass & tins",            "nl": "glas & blik" } },
-        { "id": "BESTAFR", "label": { "en": "best afval",              "nl": "best afval" } }
+        { "id": "BESTAFR",    "label": { "en": "best afval",              "nl": "best afval" } },
+        { "id": "gft",        "label": { "en": "gft (organic)",          "nl": "gft (groente/fruit/tuin)" } },
+        { "id": "restafval",  "label": { "en": "residual waste",         "nl": "restafval" } },
+        { "id": "papier",     "label": { "en": "paper (AfvalWijzer)",    "nl": "papier (AfvalWijzer)" } },
+        { "id": "pmd",        "label": { "en": "pmd (AfvalWijzer)",      "nl": "pmd (AfvalWijzer)" } },
+        { "id": "glas",       "label": { "en": "glass",                  "nl": "glas" } },
+        { "id": "textiel",    "label": { "en": "textiles",               "nl": "textiel" } },
+        { "id": "kca",        "label": { "en": "chemical waste",         "nl": "chemisch afval (KCA)" } },
+        { "id": "grof",       "label": { "en": "bulky waste",            "nl": "grof huishoudelijk afval" } },
+        { "id": "takken",     "label": { "en": "branches",               "nl": "takken/snoeiafval" } },
+        { "id": "kerstbomen", "label": { "en": "christmas trees",        "nl": "kerstbomen" } }
       ]
     }
   ]
