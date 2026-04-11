@@ -1,35 +1,28 @@
 'use strict';
 
 const TYPE_COLOR = {
-  // Circulus
-  GFT:     '#388E3C',
-  REST:    '#546E7A',
-  PAP:     '#1E88E5',
-  PMD:     '#F9A825',
-  ZWAKRA:  '#795548',
-  BESTAFR: '#7B1FA2',
-  // AfvalWijzer
-  gft:        '#388E3C',
-  restafval:  '#546E7A',
-  papier:     '#1E88E5',
-  pmd:        '#F9A825',
-  glas:       '#00897B',
-  textiel:    '#7B1FA2',
-  kca:        '#E53935',
-  grof:       '#8D6E63',
-  takken:     '#558B2F',
-  kerstbomen: '#1A237E',
+  // Circulus (uppercase 3-6 letter codes)
+  GFT:      '#388E3C',
+  REST:     '#546E7A',
+  PAP:      '#1E88E5',
+  PMD:      '#F9A825',
+  ZWAKRA:   '#795548',
+  BESTAFR:  '#7B1FA2',
+  // Groningen Burgerportaal (uppercase)
+  RESTAFVAL: '#546E7A',
+  PAPIER:    '#1E88E5',
+  PMDREST:   '#FF8F00',
+  OPK:       '#1E88E5',
+  KCA:       '#E53935',
 };
 
-const TYPE_TEXT = { PMD: '#333', pmd: '#333' };
+const TYPE_TEXT = { PMD: '#333', PMDREST: '#333' };
 
 const TYPE_LABEL = {
   // Circulus
   GFT: 'GFT', REST: 'REST', PAP: 'PAP', PMD: 'PMD', ZWAKRA: 'ZWAKRA', BESTAFR: 'BEST',
-  // AfvalWijzer
-  gft: 'GFT', restafval: 'REST', papier: 'PAP', pmd: 'PMD',
-  glas: 'GLAS', textiel: 'TEXT', kca: 'KCA', grof: 'GROF',
-  takken: 'TAK', kerstbomen: 'KERST',
+  // Groningen Burgerportaal
+  RESTAFVAL: 'REST', PAPIER: 'PAP', PMDREST: 'PMDREST', OPK: 'OPK', KCA: 'KCA',
 };
 
 let _homey;

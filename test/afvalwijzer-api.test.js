@@ -16,20 +16,21 @@ describe('toDateString', () => {
 });
 
 describe('parseCalendar', () => {
+  // Burgerportaal format: { collectionDate: 'YYYY-MM-DDT...', fraction: 'GFT' }
   const items = [
-    { date: '2026-04-11', nameType: 'gft' },
-    { date: '2026-04-11', nameType: 'papier' },
-    { date: '2026-04-14', nameType: 'restafval' },
-    { date: '2026-04-20', nameType: 'pmd' },  // buiten range
-    { date: null,         nameType: 'glas' },  // geen datum
+    { collectionDate: '2026-04-11T00:00:00.000Z', fraction: 'GFT' },
+    { collectionDate: '2026-04-11T00:00:00.000Z', fraction: 'PAPIER' },
+    { collectionDate: '2026-04-14T00:00:00.000Z', fraction: 'RESTAFVAL' },
+    { collectionDate: '2026-04-20T00:00:00.000Z', fraction: 'PMD' },   // buiten range
+    { collectionDate: null,                        fraction: 'KCA' },   // geen datum
   ];
   const from = new Date('2026-04-11');
   const to   = new Date('2026-04-17');
 
   it('groepeert collecties per datum', () => {
     const cal = parseCalendar(items, from, to);
-    assert.deepEqual(cal['2026-04-11'].sort(), ['gft', 'papier'].sort());
-    assert.deepEqual(cal['2026-04-14'], ['restafval']);
+    assert.deepEqual(cal['2026-04-11'].sort(), ['GFT', 'PAPIER'].sort());
+    assert.deepEqual(cal['2026-04-14'], ['RESTAFVAL']);
   });
 
   it('sluit datums buiten de range uit', () => {
@@ -40,7 +41,7 @@ describe('parseCalendar', () => {
   it('slaat items zonder datum over', () => {
     const cal = parseCalendar(items, from, to);
     const allTypes = Object.values(cal).flat();
-    assert.ok(!allTypes.includes('glas'));
+    assert.ok(!allTypes.includes('KCA'));
   });
 
   it('retourneert leeg object bij lege input', () => {
@@ -49,22 +50,37 @@ describe('parseCalendar', () => {
 
   it('bevat de grensdatums zelf', () => {
     const boundary = [
-      { date: '2026-04-11', nameType: 'gft' },
-      { date: '2026-04-17', nameType: 'papier' },
+      { collectionDate: '2026-04-11T00:00:00.000Z', fraction: 'GFT' },
+      { collectionDate: '2026-04-17T00:00:00.000Z', fraction: 'PAPIER' },
     ];
     const cal = parseCalendar(boundary, from, to);
-    assert.deepEqual(cal['2026-04-11'], ['gft']);
-    assert.deepEqual(cal['2026-04-17'], ['papier']);
+    assert.deepEqual(cal['2026-04-11'], ['GFT']);
+    assert.deepEqual(cal['2026-04-17'], ['PAPIER']);
+  });
+
+  it('normaliseert fraction naar hoofdletters', () => {
+    const mixed = [{ collectionDate: '2026-04-11T00:00:00.000Z', fraction: 'gft' }];
+    const cal = parseCalendar(mixed, from, to);
+    assert.deepEqual(cal['2026-04-11'], ['GFT']);
+  });
+
+  it('dedupliceert dubbele codes op dezelfde dag', () => {
+    const dupes = [
+      { collectionDate: '2026-04-11T00:00:00.000Z', fraction: 'GFT' },
+      { collectionDate: '2026-04-11T00:00:00.000Z', fraction: 'GFT' },
+    ];
+    const cal = parseCalendar(dupes, from, to);
+    assert.deepEqual(cal['2026-04-11'], ['GFT']);
   });
 });
 
 describe('formatTypesList', () => {
-  it('mapt AfvalWijzer codes naar Nederlandse labels', () => {
-    assert.equal(formatTypesList(['gft', 'papier']), 'GFT (groente/fruit/tuin), Papier');
+  it('mapt Burgerportaal codes naar Nederlandse labels', () => {
+    assert.equal(formatTypesList(['GFT', 'PAPIER']), 'GFT (groente/fruit/tuin), Papier');
   });
 
   it('valt terug op de ruwe code voor onbekende types', () => {
-    assert.equal(formatTypesList(['onbekend']), 'onbekend');
+    assert.equal(formatTypesList(['ONBEKEND']), 'ONBEKEND');
   });
 
   it('retourneert lege string bij lege array', () => {
