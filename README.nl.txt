@@ -1,7 +1,14 @@
-Kliko Kalender toont je afvalophaalschema voor de komende 7 dagen, op basis van je adres geregistreerd bij Circulus.
+Kliko Kalender toont je afvalophaalschema voor de komende 7 dagen, op basis van je adres.
 
-Voeg je adres toe via Apparaten om te zien welke containers (GFT, REST, PAP, PMD, ZWAKRA) vandaag en morgen worden opgehaald. Gebruik de widget op je Homey dashboard voor een snel overzicht, en stel Flows in om een melding te ontvangen op ophaaldagen.
+Voeg je adres toe via Apparaten om te zien welke containers (GFT, REST, PAP, PMD) vandaag en morgen worden opgehaald. Gebruik de widget op je Homey dashboard voor een snel overzicht, en stel Flows in om een melding te ontvangen op ophaaldagen.
 
-Wat maakt Kliko Kalender anders? Je kunt meerdere adressen toevoegen — elk als eigen tegel in Homey met afzonderlijke meldingen en automatiseringen. Handig als je op een hoek woont waar je containers aan twee kanten opgehaald kunnen worden, of als je meerdere adressen wilt bijhouden.
+Ondersteunde aanbieders
+────────────────────────
+• Circulus — voor adressen in Apeldoorn, Deventer, Hengelo en omliggende gemeenten
+• AfvalWijzer — voor adressen in Groningen en andere gemeenten die mijnafvalwijzer.nl gebruiken
 
-Let op: deze app ondersteunt momenteel alleen adressen die vallen onder Circulus (Apeldoorn, Deventer en omliggende gemeenten).
+Bij het toevoegen van een adres kies je eerst je aanbieder. Voor AfvalWijzer kun je optioneel een huisnummertoevoeging (bijv. A of B) invullen.
+
+Meerdere adressen
+──────────────────
+Je kunt meerdere adressen toevoegen — elk als eigen tegel in Homey met afzonderlijke meldingen en automatiseringen. Handig als je meerdere locaties wilt bijhouden, of op een hoek woont.
