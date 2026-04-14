@@ -1,6 +1,8 @@
 {
   "name": { "en": "Kliko Address", "nl": "Kliko adres" },
   "class": "other",
+  "platforms": ["local"],
+  "connectivity": ["cloud"],
   "capabilities": [
     "collection_today",
     "collection_tomorrow",
