@@ -1,24 +1,26 @@
 {
   "1.0.5": {
-    "en": "Switched to a single API (trashapi.azurewebsites.net) that covers all addresses in the Netherlands. No more separate provider selection needed.",
-    "nl": "Overgestapt op één API (trashapi.azurewebsites.net) die alle adressen in Nederland dekt. Geen aparte providerkeuze meer nodig."
+    "en": "Now works for all addresses in the Netherlands via a single API. No more provider selection needed when adding an address.",
+    "nl": "Werkt nu voor alle adressen in Nederland via één API. Geen providerkeuze meer nodig bij het toevoegen van een adres."
   },
   "1.0.4": {
-    "en": "Added support for AfvalWijzer (Groningen and other municipalities). Widget no longer scrolls internally.",
-    "nl": "Ondersteuning toegevoegd voor AfvalWijzer (Groningen en andere gemeenten). Widget scrollt niet meer intern."
+    "en": "Widget no longer scrolls internally.",
+    "nl": "Widget scrollt niet meer intern."
   },
   "1.0.3": {
-    "en": "Driver image updated to white background (App Store requirement). README now explains multi-address support and Circulus-only scope."
+    "en": "Driver image updated to white background (App Store requirement).",
+    "nl": "Driver-afbeelding bijgewerkt naar witte achtergrond (App Store vereiste)."
   },
   "1.0.2": {
-    "en": "Driver image updated to white background (App Store requirement). README now explains multi-address support and Circulus-only scope."
+    "en": "Added multi-address support: add multiple addresses as separate devices.",
+    "nl": "Meerdere adressen mogelijk: voeg meerdere adressen toe als aparte apparaten."
   },
   "1.0.1": {
-    "en": "Add GitHub source reference",
-    "nl": "GitHub bronverwijzing toegevoegd"
+    "en": "Added GitHub source reference.",
+    "nl": "GitHub bronverwijzing toegevoegd."
   },
   "1.0.0": {
-    "en": "First release: 7-day trash collection calendar for Circulus addresses with widget and Flow support",
-    "nl": "Eerste release: 7-daagse ophaalkalender voor Circulus adressen met widget en Flow ondersteuning"
+    "en": "First release: 7-day waste collection calendar with dashboard widget and Flow support.",
+    "nl": "Eerste release: 7-daagse ophaalkalender met dashboard widget en Flow ondersteuning."
   }
 }
