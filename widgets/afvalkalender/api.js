@@ -1,6 +1,6 @@
 'use strict';
 
-const { toDateString, getCollectionsForDate, formatTypesList } = require('../../lib/circulus-api');
+const { toDateString, getCollectionsForDate, formatTypesList } = require('../../lib/trashapi');
 
 function getDevices(homey) {
   return homey.drivers.getDriver('afval-adres').getDevices();

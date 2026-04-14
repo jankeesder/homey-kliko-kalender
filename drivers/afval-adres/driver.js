@@ -16,7 +16,7 @@ class AfvalAdresDriver extends Homey.Driver {
       try {
         await trashApi.validateAddress(pc, hn, tv);
         pendingDevice = {
-          name:       label.trim() || `${pc} ${hn}${tv ? ' ' + tv : ''}`,
+          name:       (label || '').trim() || `${pc} ${hn}${tv ? ' ' + tv : ''}`,
           postcode:   pc,
           huisnummer: hn,
           toevoeging: tv,

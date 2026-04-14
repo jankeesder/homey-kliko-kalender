@@ -2,8 +2,8 @@
   "id": "refresh_calendar",
   "title": { "en": "Refresh calendar now", "nl": "Ververs kalender nu" },
   "hint": {
-    "en": "Force an immediate update from the Circulus API",
-    "nl": "Forceer een directe update van de Circulus API"
+    "en": "Immediately fetch the latest waste collection calendar",
+    "nl": "Haal direct de meest recente ophaalkalender op"
   },
   "args": [
     { "type": "device", "name": "device", "filter": "driver_id=afval-adres" }

@@ -1,14 +1,25 @@
 'use strict';
 
 const TYPE_COLOR = {
-  GFT:     '#388E3C',
-  REST:    '#546E7A',
-  PAP:     '#1E88E5',
-  PMD:     '#F9A825',
-  ZWAKRA:  '#795548',
-  BESTAFR: '#7B1FA2',
+  Gft:        '#388E3C',
+  Restafval:  '#546E7A',
+  Papier:     '#1E88E5',
+  Pbd:        '#F9A825',
+  Kca:        '#E53935',
+  Grofvuil:   '#8D6E63',
+  Textiel:    '#7B1FA2',
+  Glas:       '#00897B',
+  Takken:     '#558B2F',
+  Kerstbomen: '#1A237E',
 };
-const TYPE_TEXT = { PMD: '#333' };
+
+const TYPE_TEXT = { Pbd: '#333' };
+
+const TYPE_LABEL = {
+  Gft: 'GFT', Restafval: 'REST', Papier: 'PAP', Pbd: 'PBD',
+  Kca: 'KCA', Grofvuil: 'GROF', Textiel: 'TEXT', Glas: 'GLAS',
+  Takken: 'TAK', Kerstbomen: 'KERST',
+};
 
 let _homey;
 let _allCalendars = {};
@@ -35,7 +46,8 @@ async function load() {
 function badge(type) {
   const bg    = TYPE_COLOR[type] || '#546E7A';
   const color = TYPE_TEXT[type]  || '#fff';
-  return `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-right:2px;background:${bg};color:${color}">${type}</span>`;
+  const label = TYPE_LABEL[type] || type;
+  return `<span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-right:2px;background:${bg};color:${color}">${label}</span>`;
 }
 
 function render() {
@@ -52,7 +64,6 @@ function render() {
 
   let html = '<div style="width:100%;font-size:11px">';
 
-  // Header (device names) — alleen bij meerdere apparaten
   if (multi) {
     html += '<div style="display:flex;background:#2E7D32;border-radius:4px 4px 0 0;padding:2px 0;margin-bottom:2px">';
     html += '<div style="flex:0 0 58px"></div>';
@@ -62,7 +73,6 @@ function render() {
     html += '</div>';
   }
 
-  // Rijen per dag
   entries[0].days.forEach((_, i) => {
     const isToday = i === 0;
     const hasAny  = entries.some((d) => d.days[i].hasCollection);

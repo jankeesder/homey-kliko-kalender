@@ -311,8 +311,8 @@
           "nl": "Ververs kalender nu"
         },
         "hint": {
-          "en": "Force an immediate update from the Circulus API",
-          "nl": "Forceer een directe update van de Circulus API"
+          "en": "Immediately fetch the latest waste collection calendar",
+          "nl": "Haal direct de meest recente ophaalkalender op"
         },
         "args": [
           {
@@ -331,6 +331,12 @@
         "nl": "Kliko adres"
       },
       "class": "other",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
       "capabilities": [
         "collection_today",
         "collection_tomorrow",

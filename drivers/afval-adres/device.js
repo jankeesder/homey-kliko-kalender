@@ -14,7 +14,15 @@ class AfvalAdresDevice extends Homey.Device {
     this._scheduleMidnight();
   }
 
+  async onUninit() {
+    if (this._refreshTimer)  this.homey.clearTimeout(this._refreshTimer);
+    if (this._midnightTimer) this.homey.clearTimeout(this._midnightTimer);
+  }
+
   async onSettings({ newSettings, changedKeys }) {
+    if (changedKeys.some((k) => ['postcode', 'huisnummer', 'toevoeging'].includes(k))) {
+      await this.refreshData();
+    }
     if (changedKeys.includes('refresh_interval')) {
       this._scheduleRefresh(Number(newSettings.refresh_interval) * 1000);
     }
@@ -33,14 +41,14 @@ class AfvalAdresDevice extends Homey.Device {
     try {
       const calendar = await trashApi.fetchCalendar(postcode, huisnummer, toevoeging, 7);
       await this.setStoreValue('calendar', calendar);
-      await this._updateCapabilities(calendar);
+      await this._updateCapabilities(calendar, false);
       this.log(`Calendar refreshed for ${this.getName()}`);
     } catch (err) {
       this.error(`refreshData failed for ${this.getName()}: ${err.message}`);
     }
   }
 
-  async _updateCapabilities(calendar) {
+  async _updateCapabilities(calendar, fireTriggers) {
     const now      = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -55,6 +63,8 @@ class AfvalAdresDevice extends Homey.Device {
     await this.setCapabilityValue('collection_tomorrow',       tomorrowTypes.length > 0);
     await this.setCapabilityValue('collection_types_today',    trashApi.formatTypesList(todayTypes));
     await this.setCapabilityValue('collection_types_tomorrow', trashApi.formatTypesList(tomorrowTypes));
+
+    if (!fireTriggers) return;
 
     if (todayTypes.length > 0) {
       await this.homey.flow.getDeviceTriggerCard('collection_today')
@@ -87,7 +97,7 @@ class AfvalAdresDevice extends Homey.Device {
 
     this._midnightTimer = this.homey.setTimeout(async () => {
       const calendar = this.getStoreValue('calendar') || {};
-      await this._updateCapabilities(calendar);
+      await this._updateCapabilities(calendar, true);
       this._scheduleMidnight();
     }, midnight - now);
   }
