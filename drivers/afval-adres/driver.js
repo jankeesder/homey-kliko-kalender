@@ -1,28 +1,21 @@
 'use strict';
 
-const Homey          = require('homey');
-const circulusApi    = require('../../lib/circulus-api');
-const afvalwijzerApi = require('../../lib/afvalwijzer-api');
+const Homey    = require('homey');
+const trashApi = require('../../lib/trashapi');
 
 class AfvalAdresDriver extends Homey.Driver {
   async onPair(session) {
     let pendingDevice = null;
 
-    session.setHandler('validate_address', async ({ provider, label, postcode, huisnummer, toevoeging }) => {
-      const pc   = (postcode   || '').trim().toUpperCase();
-      const hn   = (huisnummer || '').trim();
-      const tv   = (toevoeging || '').trim();
-      const prov = provider || 'circulus';
+    session.setHandler('validate_address', async ({ label, postcode, huisnummer, toevoeging }) => {
+      const pc = (postcode   || '').trim().toUpperCase();
+      const hn = (huisnummer || '').trim();
+      const tv = (toevoeging || '').trim();
 
-      this.log('Validating address:', pc, hn, tv, '(provider:', prov + ')');
+      this.log('Validating address:', pc, hn, tv);
       try {
-        if (prov === 'afvalwijzer') {
-          await afvalwijzerApi.validateAddress(pc, hn, tv);
-        } else {
-          await circulusApi.registerAddress(pc, hn);
-        }
+        await trashApi.validateAddress(pc, hn, tv);
         pendingDevice = {
-          provider:   prov,
           name:       label.trim() || `${pc} ${hn}${tv ? ' ' + tv : ''}`,
           postcode:   pc,
           huisnummer: hn,
@@ -37,16 +30,14 @@ class AfvalAdresDriver extends Homey.Driver {
 
     session.setHandler('list_devices', async () => {
       if (!pendingDevice) return [];
-      const { provider, postcode, huisnummer, toevoeging } = pendingDevice;
-      const idParts = [provider, postcode.toLowerCase(), huisnummer.toLowerCase()];
+      const { postcode, huisnummer, toevoeging } = pendingDevice;
+      const idParts = [postcode.toLowerCase(), huisnummer.toLowerCase()];
       if (toevoeging) idParts.push(toevoeging.toLowerCase());
-      const id = idParts.join('-');
       return [{
         name: pendingDevice.name,
         icon: '/icon.svg',
-        data: { id },
+        data: { id: idParts.join('-') },
         settings: {
-          provider,
           postcode,
           huisnummer,
           toevoeging,

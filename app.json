@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.klikokalender",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "compatibility": ">=12.1.2",
   "sdk": 3,
   "platforms": [
@@ -12,8 +12,8 @@
     "nl": "Kliko Kalender"
   },
   "description": {
-    "en": "Get notified which trash containers are collected today and tomorrow. Supports Circulus and AfvalWijzer (Groningen).",
-    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Ondersteunt Circulus en AfvalWijzer (Groningen)."
+    "en": "Get notified which trash containers are collected today and tomorrow. Works for all addresses in the Netherlands.",
+    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Werkt voor alle adressen in Nederland."
   },
   "category": "tools",
   "tags": {
@@ -21,19 +21,16 @@
       "trash",
       "garbage",
       "collection",
-      "circulus",
-      "afvalwijzer",
-      "groningen",
+      "netherlands",
       "reminder",
-      "waste"
+      "waste",
+      "kliko"
     ],
     "nl": [
       "afval",
       "container",
       "ophaalkalender",
-      "circulus",
-      "afvalwijzer",
-      "groningen",
+      "nederland",
       "herinnering",
       "kliko"
     ]
@@ -134,80 +131,73 @@
             },
             "values": [
               {
-                "id": "GFT",
+                "id": "Gft",
                 "label": {
-                  "en": "gft (green bin)",
-                  "nl": "gft (groene kliko)"
+                  "en": "GFT (organic)",
+                  "nl": "GFT (groente/fruit/tuin)"
                 }
               },
               {
-                "id": "REST",
+                "id": "Restafval",
                 "label": {
-                  "en": "general waste",
-                  "nl": "restafval (zwarte kliko)"
+                  "en": "General waste",
+                  "nl": "Restafval"
                 }
               },
               {
-                "id": "PAP",
+                "id": "Papier",
                 "label": {
-                  "en": "paper",
-                  "nl": "papier"
+                  "en": "Paper",
+                  "nl": "Papier"
                 }
               },
               {
-                "id": "PMD",
+                "id": "Pbd",
                 "label": {
-                  "en": "pmd / plastic",
-                  "nl": "pmd/plastic"
+                  "en": "Plastic, tins & cartons",
+                  "nl": "Plastic, blik & drankpakken"
                 }
               },
               {
-                "id": "ZWAKRA",
+                "id": "Kca",
                 "label": {
-                  "en": "glass & tins",
-                  "nl": "glas & blik"
+                  "en": "Chemical waste (KCA)",
+                  "nl": "Klein chemisch afval (KCA)"
                 }
               },
               {
-                "id": "BESTAFR",
+                "id": "Grofvuil",
                 "label": {
-                  "en": "best afval",
-                  "nl": "best afval"
+                  "en": "Bulky waste",
+                  "nl": "Grof vuil"
                 }
               },
               {
-                "id": "RESTAFVAL",
+                "id": "Textiel",
                 "label": {
-                  "en": "residual waste (Groningen)",
-                  "nl": "restafval (Groningen)"
+                  "en": "Textiles",
+                  "nl": "Textiel"
                 }
               },
               {
-                "id": "PAPIER",
+                "id": "Glas",
                 "label": {
-                  "en": "paper (Groningen)",
-                  "nl": "papier (Groningen)"
+                  "en": "Glass",
+                  "nl": "Glas"
                 }
               },
               {
-                "id": "PMDREST",
+                "id": "Takken",
                 "label": {
-                  "en": "pmd + residual (Groningen)",
-                  "nl": "pmd + restafval (Groningen)"
+                  "en": "Branches",
+                  "nl": "Takken/snoeiafval"
                 }
               },
               {
-                "id": "OPK",
+                "id": "Kerstbomen",
                 "label": {
-                  "en": "old paper & cardboard (Groningen)",
-                  "nl": "oud papier en karton (Groningen)"
-                }
-              },
-              {
-                "id": "KCA",
-                "label": {
-                  "en": "chemical waste (Groningen)",
-                  "nl": "klein chemisch afval (Groningen)"
+                  "en": "Christmas trees",
+                  "nl": "Kerstbomen"
                 }
               }
             ]
@@ -239,80 +229,73 @@
             },
             "values": [
               {
-                "id": "GFT",
+                "id": "Gft",
                 "label": {
-                  "en": "gft (green bin)",
-                  "nl": "gft (groene kliko)"
+                  "en": "GFT (organic)",
+                  "nl": "GFT (groente/fruit/tuin)"
                 }
               },
               {
-                "id": "REST",
+                "id": "Restafval",
                 "label": {
-                  "en": "general waste",
-                  "nl": "restafval (zwarte kliko)"
+                  "en": "General waste",
+                  "nl": "Restafval"
                 }
               },
               {
-                "id": "PAP",
+                "id": "Papier",
                 "label": {
-                  "en": "paper",
-                  "nl": "papier"
+                  "en": "Paper",
+                  "nl": "Papier"
                 }
               },
               {
-                "id": "PMD",
+                "id": "Pbd",
                 "label": {
-                  "en": "pmd / plastic",
-                  "nl": "pmd/plastic"
+                  "en": "Plastic, tins & cartons",
+                  "nl": "Plastic, blik & drankpakken"
                 }
               },
               {
-                "id": "ZWAKRA",
+                "id": "Kca",
                 "label": {
-                  "en": "glass & tins",
-                  "nl": "glas & blik"
+                  "en": "Chemical waste (KCA)",
+                  "nl": "Klein chemisch afval (KCA)"
                 }
               },
               {
-                "id": "BESTAFR",
+                "id": "Grofvuil",
                 "label": {
-                  "en": "best afval",
-                  "nl": "best afval"
+                  "en": "Bulky waste",
+                  "nl": "Grof vuil"
                 }
               },
               {
-                "id": "RESTAFVAL",
+                "id": "Textiel",
                 "label": {
-                  "en": "residual waste (Groningen)",
-                  "nl": "restafval (Groningen)"
+                  "en": "Textiles",
+                  "nl": "Textiel"
                 }
               },
               {
-                "id": "PAPIER",
+                "id": "Glas",
                 "label": {
-                  "en": "paper (Groningen)",
-                  "nl": "papier (Groningen)"
+                  "en": "Glass",
+                  "nl": "Glas"
                 }
               },
               {
-                "id": "PMDREST",
+                "id": "Takken",
                 "label": {
-                  "en": "pmd + residual (Groningen)",
-                  "nl": "pmd + restafval (Groningen)"
+                  "en": "Branches",
+                  "nl": "Takken/snoeiafval"
                 }
               },
               {
-                "id": "OPK",
+                "id": "Kerstbomen",
                 "label": {
-                  "en": "old paper & cardboard (Groningen)",
-                  "nl": "oud papier en karton (Groningen)"
-                }
-              },
-              {
-                "id": "KCA",
-                "label": {
-                  "en": "chemical waste (Groningen)",
-                  "nl": "klein chemisch afval (Groningen)"
+                  "en": "Christmas trees",
+                  "nl": "Kerstbomen"
                 }
               }
             ]
@@ -381,40 +364,6 @@
         {
           "type": "group",
           "label": {
-            "en": "Provider",
-            "nl": "Aanbieder"
-          },
-          "children": [
-            {
-              "id": "provider",
-              "type": "dropdown",
-              "label": {
-                "en": "Waste collection provider",
-                "nl": "Afvalaanbieder"
-              },
-              "value": "circulus",
-              "values": [
-                {
-                  "id": "circulus",
-                  "label": {
-                    "en": "Circulus (Apeldoorn, Deventer e.o.)",
-                    "nl": "Circulus (Apeldoorn, Deventer e.o.)"
-                  }
-                },
-                {
-                  "id": "afvalwijzer",
-                  "label": {
-                    "en": "Groningen (Burgerportaal)",
-                    "nl": "Groningen (Burgerportaal)"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "group",
-          "label": {
             "en": "Address",
             "nl": "Adres"
           },
@@ -445,8 +394,8 @@
                 "nl": "Toevoeging"
               },
               "hint": {
-                "en": "Optional, e.g. A or B (Groningen only)",
-                "nl": "Optioneel, bijv. A of B (alleen Groningen)"
+                "en": "Optional, e.g. A or B",
+                "nl": "Optioneel, bijv. A of B"
               },
               "value": ""
             }

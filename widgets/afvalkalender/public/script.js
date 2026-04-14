@@ -1,28 +1,24 @@
 'use strict';
 
 const TYPE_COLOR = {
-  // Circulus (uppercase 3-6 letter codes)
-  GFT:      '#388E3C',
-  REST:     '#546E7A',
-  PAP:      '#1E88E5',
-  PMD:      '#F9A825',
-  ZWAKRA:   '#795548',
-  BESTAFR:  '#7B1FA2',
-  // Groningen Burgerportaal (uppercase)
-  RESTAFVAL: '#546E7A',
-  PAPIER:    '#1E88E5',
-  PMDREST:   '#FF8F00',
-  OPK:       '#1E88E5',
-  KCA:       '#E53935',
+  Gft:        '#388E3C',
+  Restafval:  '#546E7A',
+  Papier:     '#1E88E5',
+  Pbd:        '#F9A825',
+  Kca:        '#E53935',
+  Grofvuil:   '#8D6E63',
+  Textiel:    '#7B1FA2',
+  Glas:       '#00897B',
+  Takken:     '#558B2F',
+  Kerstbomen: '#1A237E',
 };
 
-const TYPE_TEXT = { PMD: '#333', PMDREST: '#333' };
+const TYPE_TEXT = { Pbd: '#333' };
 
 const TYPE_LABEL = {
-  // Circulus
-  GFT: 'GFT', REST: 'REST', PAP: 'PAP', PMD: 'PMD', ZWAKRA: 'ZWAKRA', BESTAFR: 'BEST',
-  // Groningen Burgerportaal
-  RESTAFVAL: 'REST', PAPIER: 'PAP', PMDREST: 'PMDREST', OPK: 'OPK', KCA: 'KCA',
+  Gft: 'GFT', Restafval: 'REST', Papier: 'PAP', Pbd: 'PBD',
+  Kca: 'KCA', Grofvuil: 'GROF', Textiel: 'TEXT', Glas: 'GLAS',
+  Takken: 'TAK', Kerstbomen: 'KERST',
 };
 
 let _homey;

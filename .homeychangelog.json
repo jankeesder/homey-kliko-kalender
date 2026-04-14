@@ -1,4 +1,8 @@
 {
+  "1.0.5": {
+    "en": "Switched to a single API (trashapi.azurewebsites.net) that covers all addresses in the Netherlands. No more separate provider selection needed.",
+    "nl": "Overgestapt op één API (trashapi.azurewebsites.net) die alle adressen in Nederland dekt. Geen aparte providerkeuze meer nodig."
+  },
   "1.0.4": {
     "en": "Added support for AfvalWijzer (Groningen and other municipalities). Widget no longer scrolls internally.",
     "nl": "Ondersteuning toegevoegd voor AfvalWijzer (Groningen en andere gemeenten). Widget scrollt niet meer intern."

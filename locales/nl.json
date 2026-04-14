@@ -2,25 +2,16 @@
   "pair": {
     "search": {
       "title": "Adres toevoegen",
-      "provider_label": "Afvalaanbieder",
       "postcode_label": "Postcode",
       "housenumber_label": "Huisnummer",
       "toevoeging_label": "Toevoeging (optioneel)",
       "name_label": "Naam (optioneel)",
       "next_btn": "Volgende",
-      "validating_circulus": "Adres controleren bij Circulus...",
-      "validating_afvalwijzer": "Adres controleren bij Gemeente Groningen...",
       "error_required": "Vul postcode en huisnummer in.",
       "error_not_found": "Adres niet gevonden. Controleer postcode en huisnummer."
     }
   },
   "settings": {
-    "provider": {
-      "label": "Afvalaanbieder"
-    },
-    "toevoeging": {
-      "label": "Toevoeging"
-    },
     "refresh_interval": {
       "label": "Verversingsinterval"
     }

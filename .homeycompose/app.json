@@ -1,6 +1,6 @@
 {
   "id": "nl.klikokalender",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "compatibility": ">=12.1.2",
   "sdk": 3,
   "platforms": ["local"],
@@ -9,13 +9,13 @@
     "nl": "Kliko Kalender"
   },
   "description": {
-    "en": "Get notified which trash containers are collected today and tomorrow. Supports Circulus and AfvalWijzer (Groningen).",
-    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Ondersteunt Circulus en AfvalWijzer (Groningen)."
+    "en": "Get notified which trash containers are collected today and tomorrow. Works for all addresses in the Netherlands.",
+    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Werkt voor alle adressen in Nederland."
   },
   "category": "tools",
   "tags": {
-    "en": ["trash", "garbage", "collection", "circulus", "afvalwijzer", "groningen", "reminder", "waste"],
-    "nl": ["afval", "container", "ophaalkalender", "circulus", "afvalwijzer", "groningen", "herinnering", "kliko"]
+    "en": ["trash", "garbage", "collection", "netherlands", "reminder", "waste", "kliko"],
+    "nl": ["afval", "container", "ophaalkalender", "nederland", "herinnering", "kliko"]
   },
   "permissions": [],
   "images": {

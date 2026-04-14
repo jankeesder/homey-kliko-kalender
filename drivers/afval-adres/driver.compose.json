@@ -16,22 +16,6 @@
   "settings": [
     {
       "type": "group",
-      "label": { "en": "Provider", "nl": "Aanbieder" },
-      "children": [
-        {
-          "id": "provider",
-          "type": "dropdown",
-          "label": { "en": "Waste collection provider", "nl": "Afvalaanbieder" },
-          "value": "circulus",
-          "values": [
-            { "id": "circulus",    "label": { "en": "Circulus (Apeldoorn, Deventer e.o.)", "nl": "Circulus (Apeldoorn, Deventer e.o.)" } },
-            { "id": "afvalwijzer", "label": { "en": "Groningen (Burgerportaal)",               "nl": "Groningen (Burgerportaal)" } }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "group",
       "label": { "en": "Address", "nl": "Adres" },
       "children": [
         {
@@ -50,7 +34,7 @@
           "id": "toevoeging",
           "type": "text",
           "label": { "en": "House number addition", "nl": "Toevoeging" },
-          "hint": { "en": "Optional, e.g. A or B (Groningen only)", "nl": "Optioneel, bijv. A of B (alleen Groningen)" },
+          "hint": { "en": "Optional, e.g. A or B", "nl": "Optioneel, bijv. A of B" },
           "value": ""
         }
       ]

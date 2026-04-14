@@ -2,25 +2,16 @@
   "pair": {
     "search": {
       "title": "Add address",
-      "provider_label": "Waste collection provider",
       "postcode_label": "Postal code",
       "housenumber_label": "House number",
       "toevoeging_label": "House number addition (optional)",
       "name_label": "Name (optional)",
       "next_btn": "Next",
-      "validating_circulus": "Checking address with Circulus...",
-      "validating_afvalwijzer": "Checking address with Gemeente Groningen...",
       "error_required": "Please fill in postal code and house number.",
       "error_not_found": "Address not found. Check postal code and house number."
     }
   },
   "settings": {
-    "provider": {
-      "label": "Waste collection provider"
-    },
-    "toevoeging": {
-      "label": "House number addition"
-    },
     "refresh_interval": {
       "label": "Refresh interval"
     }

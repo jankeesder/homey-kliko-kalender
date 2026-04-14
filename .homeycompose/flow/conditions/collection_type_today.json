@@ -12,17 +12,16 @@
       "type": "dropdown",
       "title": { "en": "Container type", "nl": "Containertype" },
       "values": [
-        { "id": "GFT",       "label": { "en": "gft (green bin)",        "nl": "gft (groene kliko)" } },
-        { "id": "REST",      "label": { "en": "general waste",           "nl": "restafval (zwarte kliko)" } },
-        { "id": "PAP",       "label": { "en": "paper",                   "nl": "papier" } },
-        { "id": "PMD",       "label": { "en": "pmd / plastic",           "nl": "pmd/plastic" } },
-        { "id": "ZWAKRA",    "label": { "en": "glass & tins",            "nl": "glas & blik" } },
-        { "id": "BESTAFR",   "label": { "en": "best afval",              "nl": "best afval" } },
-        { "id": "RESTAFVAL", "label": { "en": "residual waste (Groningen)", "nl": "restafval (Groningen)" } },
-        { "id": "PAPIER",    "label": { "en": "paper (Groningen)",       "nl": "papier (Groningen)" } },
-        { "id": "PMDREST",   "label": { "en": "pmd + residual (Groningen)", "nl": "pmd + restafval (Groningen)" } },
-        { "id": "OPK",       "label": { "en": "old paper & cardboard (Groningen)", "nl": "oud papier en karton (Groningen)" } },
-        { "id": "KCA",       "label": { "en": "chemical waste (Groningen)", "nl": "klein chemisch afval (Groningen)" } }
+        { "id": "Gft",        "label": { "en": "GFT (organic)",            "nl": "GFT (groente/fruit/tuin)" } },
+        { "id": "Restafval",  "label": { "en": "General waste",            "nl": "Restafval" } },
+        { "id": "Papier",     "label": { "en": "Paper",                    "nl": "Papier" } },
+        { "id": "Pbd",        "label": { "en": "Plastic, tins & cartons",  "nl": "Plastic, blik & drankpakken" } },
+        { "id": "Kca",        "label": { "en": "Chemical waste (KCA)",     "nl": "Klein chemisch afval (KCA)" } },
+        { "id": "Grofvuil",   "label": { "en": "Bulky waste",              "nl": "Grof vuil" } },
+        { "id": "Textiel",    "label": { "en": "Textiles",                 "nl": "Textiel" } },
+        { "id": "Glas",       "label": { "en": "Glass",                    "nl": "Glas" } },
+        { "id": "Takken",     "label": { "en": "Branches",                 "nl": "Takken/snoeiafval" } },
+        { "id": "Kerstbomen", "label": { "en": "Christmas trees",          "nl": "Kerstbomen" } }
       ]
     }
   ]

@@ -1,8 +1,7 @@
 'use strict';
 
-const Homey        = require('homey');
-const circulusApi   = require('../../lib/circulus-api');
-const afvalwijzerApi = require('../../lib/afvalwijzer-api');
+const Homey    = require('homey');
+const trashApi = require('../../lib/trashapi');
 
 class AfvalAdresDevice extends Homey.Device {
 
@@ -22,7 +21,6 @@ class AfvalAdresDevice extends Homey.Device {
   }
 
   async refreshData() {
-    const provider   = this.getSetting('provider') || 'circulus';
     const postcode   = this.getSetting('postcode');
     const huisnummer = this.getSetting('huisnummer');
     const toevoeging = this.getSetting('toevoeging') || '';
@@ -33,47 +31,40 @@ class AfvalAdresDevice extends Homey.Device {
     }
 
     try {
-      let calendar;
-      if (provider === 'afvalwijzer') {
-        calendar = await afvalwijzerApi.fetchCalendar(postcode, huisnummer, toevoeging, 7);
-      } else {
-        const session = await circulusApi.registerAddress(postcode, huisnummer);
-        calendar = await circulusApi.fetchCalendar(session, 7);
-      }
+      const calendar = await trashApi.fetchCalendar(postcode, huisnummer, toevoeging, 7);
       await this.setStoreValue('calendar', calendar);
-      await this._updateCapabilities(calendar, provider);
-      this.log(`Calendar refreshed for ${this.getName()} (${provider})`);
+      await this._updateCapabilities(calendar);
+      this.log(`Calendar refreshed for ${this.getName()}`);
     } catch (err) {
       this.error(`refreshData failed for ${this.getName()}: ${err.message}`);
     }
   }
 
-  async _updateCapabilities(calendar, provider) {
+  async _updateCapabilities(calendar) {
+    const now      = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    const todayStr    = circulusApi.toDateString(new Date());
-    const tomorrowStr = circulusApi.toDateString(tomorrow);
+    const todayStr    = trashApi.toDateString(now);
+    const tomorrowStr = trashApi.toDateString(tomorrow);
 
-    const todayTypes    = circulusApi.getCollectionsForDate(calendar, todayStr);
-    const tomorrowTypes = circulusApi.getCollectionsForDate(calendar, tomorrowStr);
-
-    const fmt = provider === 'afvalwijzer' ? afvalwijzerApi.formatTypesList : circulusApi.formatTypesList;
+    const todayTypes    = trashApi.getCollectionsForDate(calendar, todayStr);
+    const tomorrowTypes = trashApi.getCollectionsForDate(calendar, tomorrowStr);
 
     await this.setCapabilityValue('collection_today',          todayTypes.length > 0);
     await this.setCapabilityValue('collection_tomorrow',       tomorrowTypes.length > 0);
-    await this.setCapabilityValue('collection_types_today',    fmt(todayTypes));
-    await this.setCapabilityValue('collection_types_tomorrow', fmt(tomorrowTypes));
+    await this.setCapabilityValue('collection_types_today',    trashApi.formatTypesList(todayTypes));
+    await this.setCapabilityValue('collection_types_tomorrow', trashApi.formatTypesList(tomorrowTypes));
 
     if (todayTypes.length > 0) {
       await this.homey.flow.getDeviceTriggerCard('collection_today')
-        .trigger(this, { types: fmt(todayTypes) })
+        .trigger(this, { types: trashApi.formatTypesList(todayTypes) })
         .catch((err) => this.error('Trigger collection_today failed:', err.message));
     }
 
     if (tomorrowTypes.length > 0) {
       await this.homey.flow.getDeviceTriggerCard('collection_tomorrow')
-        .trigger(this, { types: fmt(tomorrowTypes) })
+        .trigger(this, { types: trashApi.formatTypesList(tomorrowTypes) })
         .catch((err) => this.error('Trigger collection_tomorrow failed:', err.message));
     }
   }
@@ -96,8 +87,7 @@ class AfvalAdresDevice extends Homey.Device {
 
     this._midnightTimer = this.homey.setTimeout(async () => {
       const calendar = this.getStoreValue('calendar') || {};
-      const provider = this.getSetting('provider') || 'circulus';
-      await this._updateCapabilities(calendar, provider);
+      await this._updateCapabilities(calendar);
       this._scheduleMidnight();
     }, midnight - now);
   }

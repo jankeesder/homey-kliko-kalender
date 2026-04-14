@@ -6,25 +6,18 @@
     h3 { color: #2E7D32; margin-bottom: 4px; }
     .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
     label { display: block; font-size: 13px; font-weight: 600; margin: 12px 0 4px; color: #333; }
-    input, select { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box; background: #fff; }
-    input:focus, select:focus { outline: none; border-color: #2E7D32; }
+    input { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box; background: #fff; }
+    input:focus { outline: none; border-color: #2E7D32; }
     button { margin-top: 20px; width: 100%; padding: 10px; background: #2E7D32; color: white; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; }
     button:hover { background: #1b5e20; }
     button:disabled { background: #aaa; cursor: default; }
     .error { color: #c62828; font-size: 13px; margin-top: 10px; display: none; }
     .spinner { display: none; text-align: center; margin-top: 12px; color: #666; font-size: 13px; }
-    .field-hidden { display: none; }
   </style>
 </head>
 <body>
   <h3>🗑 Kliko adres toevoegen</h3>
-  <p class="subtitle" id="subtitle">Voer uw adres in om de ophaalkalender op te halen.</p>
-
-  <label for="provider">Afvalaanbieder</label>
-  <select id="provider">
-    <option value="circulus">Circulus (Apeldoorn, Deventer e.o.)</option>
-    <option value="afvalwijzer">Groningen (Burgerportaal)</option>
-  </select>
+  <p class="subtitle">Voer uw adres in om de ophaalkalender op te halen. Werkt voor heel Nederland.</p>
 
   <label for="label">Naam (optioneel)</label>
   <input type="text" id="label" placeholder="bijv. Thuis, Werk" />
@@ -35,10 +28,8 @@
   <label for="huisnummer">Huisnummer</label>
   <input type="text" id="huisnummer" placeholder="bijv. 1" maxlength="10" />
 
-  <div id="toevoegingField" class="field-hidden">
-    <label for="toevoeging">Toevoeging (optioneel)</label>
-    <input type="text" id="toevoeging" placeholder="bijv. A of B" maxlength="10" />
-  </div>
+  <label for="toevoeging">Toevoeging (optioneel)</label>
+  <input type="text" id="toevoeging" placeholder="bijv. A of B" maxlength="10" />
 
   <button id="nextBtn">Volgende</button>
   <div class="error" id="errorMsg"></div>
@@ -47,36 +38,16 @@
   <script type="application/javascript">
     var homeyInstance = null;
 
-    var SUBTITLES = {
-      circulus:    'Voer uw adres in om de ophaalkalender van Circulus op te halen.',
-      afvalwijzer: 'Voer uw adres in om de ophaalkalender van Gemeente Groningen op te halen.',
-    };
-
-    var SPINNERS = {
-      circulus:    'Adres controleren bij Circulus...',
-      afvalwijzer: 'Adres controleren bij Gemeente Groningen...',
-    };
-
-    function onProviderChange() {
-      var prov = document.getElementById('provider').value;
-      document.getElementById('subtitle').textContent      = SUBTITLES[prov] || SUBTITLES.circulus;
-      document.getElementById('toevoegingField').className = prov === 'afvalwijzer' ? '' : 'field-hidden';
-    }
-
     function initPair(Homey) {
       if (homeyInstance) return;
       homeyInstance = Homey;
       try { Homey.ready(); } catch(e) {}
-
-      document.getElementById('provider').addEventListener('change', onProviderChange);
-      onProviderChange();
 
       var btn      = document.getElementById('nextBtn');
       var errorEl  = document.getElementById('errorMsg');
       var spinner  = document.getElementById('spinner');
 
       btn.addEventListener('click', function() {
-        var provider   = document.getElementById('provider').value;
         var label      = document.getElementById('label').value;
         var postcode   = document.getElementById('postcode').value.trim();
         var huisnummer = document.getElementById('huisnummer').value.trim();
@@ -91,10 +62,9 @@
         }
 
         btn.disabled          = true;
-        spinner.textContent   = SPINNERS[provider] || SPINNERS.circulus;
         spinner.style.display = 'block';
 
-        Homey.emit('validate_address', { provider: provider, label: label, postcode: postcode, huisnummer: huisnummer, toevoeging: toevoeging })
+        Homey.emit('validate_address', { label: label, postcode: postcode, huisnummer: huisnummer, toevoeging: toevoeging })
           .then(function(result) {
             if (result && result.success) {
               Homey.showView('confirm');
