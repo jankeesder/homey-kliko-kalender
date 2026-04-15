@@ -1,4 +1,8 @@
 {
+  "1.0.6": {
+    "en": "Flow conditions now use stable container codes (GFT, REST, PAP, PMD) — existing Flows continue to work after upgrading from any previous version.",
+    "nl": "Flow-voorwaarden gebruiken nu stabiele containercodes (GFT, REST, PAP, PMD) — bestaande Flows blijven werken na een upgrade van elke vorige versie."
+  },
   "1.0.5": {
     "en": "Now works for all addresses in the Netherlands via a single API. No more provider selection needed when adding an address.",
     "nl": "Werkt nu voor alle adressen in Nederland via één API. Geen providerkeuze meer nodig bij het toevoegen van een adres."

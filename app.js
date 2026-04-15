@@ -6,16 +6,25 @@ const trashApi = require('./lib/trashapi');
 // Map legacy waste type codes (v1.0.3 Circulus, v1.0.4 Burgerportaal)
 // to the TrashAPI names used from v1.0.5 onward.
 // This keeps existing Flows working after the upgrade.
+// Maps all Flow dropdown IDs → TrashAPI names used internally.
+// Stable short codes (GFT, REST, PAP, PMD, KCA) are the canonical dropdown IDs
+// so existing Flows keep working after provider changes.
 const LEGACY_CODE_MAP = {
-  // Circulus (v1.0.3)
+  // Current dropdown IDs (v1.0.6+)
   GFT:       'Gft',
   REST:      'Restafval',
   PAP:       'Papier',
   PMD:       'Pbd',
-  // Burgerportaal/Groningen (v1.0.4)
+  KCA:       'Kca',
+  // Intermediate codes from v1.0.5 dropdown (Title-case TrashAPI names)
+  Gft:       'Gft',
+  Restafval: 'Restafval',
+  Papier:    'Papier',
+  Pbd:       'Pbd',
+  Kca:       'Kca',
+  // Burgerportaal codes from v1.0.4
   RESTAFVAL: 'Restafval',
   PAPIER:    'Papier',
-  KCA:       'Kca',
   OPK:       'Papier',
 };
 

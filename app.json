@@ -131,35 +131,35 @@
             },
             "values": [
               {
-                "id": "Gft",
+                "id": "GFT",
                 "label": {
                   "en": "GFT (organic)",
                   "nl": "GFT (groente/fruit/tuin)"
                 }
               },
               {
-                "id": "Restafval",
+                "id": "REST",
                 "label": {
                   "en": "General waste",
                   "nl": "Restafval"
                 }
               },
               {
-                "id": "Papier",
+                "id": "PAP",
                 "label": {
                   "en": "Paper",
                   "nl": "Papier"
                 }
               },
               {
-                "id": "Pbd",
+                "id": "PMD",
                 "label": {
                   "en": "Plastic, tins & cartons",
                   "nl": "Plastic, blik & drankpakken"
                 }
               },
               {
-                "id": "Kca",
+                "id": "KCA",
                 "label": {
                   "en": "Chemical waste (KCA)",
                   "nl": "Klein chemisch afval (KCA)"
@@ -229,35 +229,35 @@
             },
             "values": [
               {
-                "id": "Gft",
+                "id": "GFT",
                 "label": {
                   "en": "GFT (organic)",
                   "nl": "GFT (groente/fruit/tuin)"
                 }
               },
               {
-                "id": "Restafval",
+                "id": "REST",
                 "label": {
                   "en": "General waste",
                   "nl": "Restafval"
                 }
               },
               {
-                "id": "Papier",
+                "id": "PAP",
                 "label": {
                   "en": "Paper",
                   "nl": "Papier"
                 }
               },
               {
-                "id": "Pbd",
+                "id": "PMD",
                 "label": {
                   "en": "Plastic, tins & cartons",
                   "nl": "Plastic, blik & drankpakken"
                 }
               },
               {
-                "id": "Kca",
+                "id": "KCA",
                 "label": {
                   "en": "Chemical waste (KCA)",
                   "nl": "Klein chemisch afval (KCA)"
