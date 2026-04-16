@@ -5,7 +5,7 @@ Voeg je adres toe via Apparaten om te zien welke containers (GFT, REST, PAP, PMD
 Wat maakt Kliko Kalender anders? Je kunt meerdere adressen toevoegen — elk als eigen tegel in Homey met afzonderlijke meldingen en automatiseringen. Handig als je op een hoek woont waar je containers aan twee kanten opgehaald kunnen worden, of als je meerdere adressen wilt bijhouden.
 
 Voorbeeldflow: dagelijkse meldingen
-─────────────────────────────────────
+
 's Ochtends (8:00):
   Als:  Tijdstip is 8:00
   En:   Ophaling vandaag is Ja → [apparaat]

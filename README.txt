@@ -5,7 +5,7 @@ Add your address via Devices to see which containers (GFT, REST, PAP, PMD) are c
 What makes Kliko Calendar different? You can add multiple addresses — each as its own tile in Homey with separate notifications and automations. Perfect if you live on a corner where your bins can be collected from either side, or if you want to track collection at multiple properties.
 
 Example flow: daily collection reminders
-──────────────────────────────────────────
+
 Morning (8:00 AM):
   When: Time is 8:00 AM
   And:  Collection today is Yes → [device]
