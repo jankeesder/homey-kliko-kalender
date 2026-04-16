@@ -1,7 +1,11 @@
 {
+  "1.0.8": {
+    "en": "Fixed address lookup returning 404 error (introduced in 1.0.7).",
+    "nl": "Probleem opgelost waarbij adressen een 404-fout gaven (geïntroduceerd in 1.0.7)."
+  },
   "1.0.7": {
-    "en": "Added flow examples to description and README. Fixed an issue where some addresses could not be found due to API caching.",
-    "nl": "Flow-voorbeelden toegevoegd aan omschrijving en README. Probleem opgelost waarbij sommige adressen niet gevonden werden door API-caching."
+    "en": "Added flow examples to description and README.",
+    "nl": "Flow-voorbeelden toegevoegd aan omschrijving en README."
   },
   "1.0.6": {
     "en": "Flow conditions now use stable container codes (GFT, REST, PAP, PMD) — existing Flows continue to work after upgrading from any previous version.",
