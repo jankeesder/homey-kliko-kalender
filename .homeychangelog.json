@@ -1,4 +1,8 @@
 {
+  "1.0.10": {
+    "en": "Simplified app description.",
+    "nl": "App-omschrijving vereenvoudigd."
+  },
   "1.0.9": {
     "en": "Updated description and README with flow examples.",
     "nl": "Omschrijving en README bijgewerkt met flow-voorbeelden."
