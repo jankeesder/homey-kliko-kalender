@@ -1,6 +1,6 @@
 {
   "id": "nl.klikokalender",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "compatibility": ">=12.1.2",
   "sdk": 3,
   "platforms": ["local"],
@@ -9,8 +9,8 @@
     "nl": "Kliko Kalender"
   },
   "description": {
-    "en": "Get notified which trash containers are collected today and tomorrow. Works for all addresses in the Netherlands.",
-    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Werkt voor alle adressen in Nederland."
+    "en": "Get notified which trash containers are collected today and tomorrow. Works for all addresses in the Netherlands. Use Flows to send automatic reminders — for example every morning at 8:00 and every evening at 20:00.",
+    "nl": "Ontvang een melding welke containers vandaag en morgen worden geleegd. Werkt voor alle adressen in Nederland. Gebruik Flows voor automatische herinneringen — bijvoorbeeld elke ochtend om 8:00 en elke avond om 20:00."
   },
   "category": "tools",
   "tags": {

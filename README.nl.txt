@@ -11,3 +11,15 @@ Een adres toevoegen
 Meerdere adressen
 ──────────────────
 Je kunt meerdere adressen toevoegen — elk als eigen tegel in Homey met afzonderlijke meldingen en automatiseringen. Handig als je meerdere locaties wilt bijhouden.
+
+Voorbeeldflow: dagelijkse meldingen
+─────────────────────────────────────
+'s Ochtends (8:00):
+  Als:  Tijdstip is 8:00
+  En:   Ophaling vandaag is Ja → [apparaat]
+  Dan:  Stuur een melding → "Vandaag wordt [Ophaaltypen vandaag] opgehaald"
+
+'s Avonds (20:00):
+  Als:  Tijdstip is 20:00
+  En:   Ophaling morgen is Ja → [apparaat]
+  Dan:  Stuur een melding → "Morgen wordt [Ophaaltypen morgen] opgehaald"

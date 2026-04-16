@@ -11,3 +11,15 @@ Adding an address
 Multiple addresses
 ───────────────────
 You can add multiple addresses — each as its own device in Homey with separate notifications and automations. Useful if you want to track multiple locations.
+
+Example flow: daily collection reminders
+──────────────────────────────────────────
+Morning (8:00 AM):
+  When: Time is 8:00 AM
+  And:  Collection today is Yes → [device]
+  Then: Send a notification → "Collected today: [Collection types today]"
+
+Evening (8:00 PM):
+  When: Time is 8:00 PM
+  And:  Collection tomorrow is Yes → [device]
+  Then: Send a notification → "Collected tomorrow: [Collection types tomorrow]"
