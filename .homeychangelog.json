@@ -1,4 +1,8 @@
 {
+  "1.0.9": {
+    "en": "Updated description and README with flow examples.",
+    "nl": "Omschrijving en README bijgewerkt met flow-voorbeelden."
+  },
   "1.0.8": {
     "en": "Fixed address lookup returning 404 error (introduced in 1.0.7).",
     "nl": "Probleem opgelost waarbij adressen een 404-fout gaven (geïntroduceerd in 1.0.7)."
