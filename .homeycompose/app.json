@@ -1,6 +1,6 @@
 {
   "id": "nl.klikokalender",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "compatibility": ">=12.1.2",
   "sdk": 3,
   "platforms": ["local"],
