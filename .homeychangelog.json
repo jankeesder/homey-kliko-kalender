@@ -1,4 +1,8 @@
 {
+  "2.0.1": {
+    "en": "Waste types on the device are now shown with short labels (e.g. \"GFT, PMD\") so they fit in the Homey app and dashboard. Flow tokens still use the full names. Note: Flows that compare the device's type text to the old long names need to be updated.",
+    "nl": "Afvalsoorten op het apparaat worden nu met korte labels getoond (bijv. \"GFT, PMD\"), zodat ze passen in de Homey-app en het dashboard. Flow-tokens gebruiken nog steeds de volledige namen. Let op: Flows die de typetekst van het apparaat vergelijken met de oude lange namen moeten worden aangepast."
+  },
   "2.0.0": {
     "en": "Now works for all addresses in the Netherlands — no longer limited to Circulus municipalities. Existing Flows continue to work without any changes.",
     "nl": "Werkt nu voor alle adressen in Nederland — niet langer beperkt tot Circulus-gemeenten. Bestaande Flows blijven werken zonder aanpassingen."

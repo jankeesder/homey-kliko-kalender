@@ -1,6 +1,6 @@
 'use strict';
 
-const { toDateString, getCollectionsForDate, formatTypesList } = require('../../lib/trashapi');
+const { toDateString, getCollectionsForDate } = require('../../lib/trashapi');
 
 function getDevices(homey) {
   return homey.drivers.getDriver('afval-adres').getDevices();
@@ -19,7 +19,6 @@ function buildDays(calendar) {
       dateStr,
       dayLabel: i === 0 ? 'Vandaag' : i === 1 ? 'Morgen' : _dutchDayLabel(d),
       types,
-      typesLabel: formatTypesList(types),
       hasCollection: types.length > 0,
     });
   }

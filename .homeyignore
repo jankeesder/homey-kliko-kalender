@@ -1,0 +1,5 @@
+test/
+docs/
+widgets/*/__assets__/
+README.md
+*.tar.gz

@@ -1,3 +1,5 @@
 node_modules/
 .homeybuild/
 *.tar.gz
+widgets/*/__assets__/
+docs/

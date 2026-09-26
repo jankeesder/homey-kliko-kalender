@@ -3,12 +3,9 @@
 const Homey    = require('homey');
 const trashApi = require('./lib/trashapi');
 
-// Map legacy waste type codes (v1.0.3 Circulus, v1.0.4 Burgerportaal)
-// to the TrashAPI names used from v1.0.5 onward.
-// This keeps existing Flows working after the upgrade.
-// Maps all Flow dropdown IDs → TrashAPI names used internally.
-// Stable short codes (GFT, REST, PAP, PMD, KCA) are the canonical dropdown IDs
-// so existing Flows keep working after provider changes.
+// Maps Flow dropdown IDs to the TrashAPI names used internally.
+// Stable codes (GFT, REST, PAP, PMD, KCA) are the current dropdown IDs;
+// the legacy codes from v1.0.4 and v1.0.5 keep existing Flows working.
 const LEGACY_CODE_MAP = {
   // Current dropdown IDs (v1.0.6+)
   GFT:       'Gft',
@@ -34,7 +31,7 @@ function normalizeType(type) {
 
 class AfvalContainerApp extends Homey.App {
   async onInit() {
-    this.log('AfvalContainerkalender app initialized');
+    this.log('Kliko Kalender app initialized');
 
     this.homey.flow.getConditionCard('collection_type_today')
       .registerRunListener(async ({ device, type }) => {

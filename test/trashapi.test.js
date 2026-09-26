@@ -3,7 +3,10 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
 
-const { toDateString, parseCalendar, formatTypesList, getCollectionsForDate } = require('../lib/trashapi');
+const {
+  toDateString, parseCalendar, formatTypesList, formatTypesShort, getCollectionsForDate,
+  WASTE_TYPES, WASTE_TYPES_SHORT,
+} = require('../lib/trashapi');
 
 describe('toDateString', () => {
   it('formats a date as YYYY-MM-DD', () => {
@@ -79,6 +82,27 @@ describe('formatTypesList', () => {
 
   it('retourneert lege string bij lege array', () => {
     assert.equal(formatTypesList([]), '');
+  });
+});
+
+describe('formatTypesShort', () => {
+  it('mapt TrashAPI namen naar korte labels', () => {
+    assert.equal(formatTypesShort(['Gft', 'Pbd']), 'GFT, PMD');
+  });
+
+  it('heeft een kort label voor elk bekend type', () => {
+    for (const name of Object.keys(WASTE_TYPES)) {
+      assert.ok(WASTE_TYPES_SHORT[name], `geen kort label voor ${name}`);
+      assert.ok(WASTE_TYPES_SHORT[name].length <= 10, `label te lang voor ${name}`);
+    }
+  });
+
+  it('valt terug op de ruwe naam voor onbekende types', () => {
+    assert.equal(formatTypesShort(['Onbekend']), 'Onbekend');
+  });
+
+  it('retourneert lege string bij lege array', () => {
+    assert.equal(formatTypesShort([]), '');
   });
 });
 

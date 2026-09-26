@@ -61,8 +61,8 @@ class AfvalAdresDevice extends Homey.Device {
 
     await this.setCapabilityValue('collection_today',          todayTypes.length > 0);
     await this.setCapabilityValue('collection_tomorrow',       tomorrowTypes.length > 0);
-    await this.setCapabilityValue('collection_types_today',    trashApi.formatTypesList(todayTypes));
-    await this.setCapabilityValue('collection_types_tomorrow', trashApi.formatTypesList(tomorrowTypes));
+    await this.setCapabilityValue('collection_types_today',    trashApi.formatTypesShort(todayTypes));
+    await this.setCapabilityValue('collection_types_tomorrow', trashApi.formatTypesShort(tomorrowTypes));
 
     if (!fireTriggers) return;
 
