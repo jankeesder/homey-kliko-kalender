@@ -120,3 +120,48 @@ describe('getCollectionsForDate', () => {
     assert.deepEqual(getCollectionsForDate(calendar, '2026-04-15'), []);
   });
 });
+
+describe('fetchFromSources', () => {
+  const { fetchFromSources } = require('../lib/trashapi');
+  const ok    = (items) => async () => ({ found: true,  items });
+  const empty = async () => ({ found: false, items: [] });
+  const fail  = (msg) => async () => { throw new Error(msg); };
+
+  it('gebruikt de eerste bron die het adres kent', async () => {
+    let called = false;
+    const second = async () => { called = true; return { found: true, items: [] }; };
+    const items = await fetchFromSources([ok([{ name: 'Gft' }]), second]);
+    assert.deepEqual(items, [{ name: 'Gft' }]);
+    assert.equal(called, false);
+  });
+
+  it('valt terug op de volgende bron als de eerste leeg is', async () => {
+    assert.deepEqual(await fetchFromSources([empty, ok([{ name: 'Papier' }])]), [{ name: 'Papier' }]);
+  });
+
+  it('valt terug op de volgende bron als de eerste faalt', async () => {
+    assert.deepEqual(await fetchFromSources([fail('Timeout na 15000ms'), ok([])]), []);
+  });
+
+  it('meldt adres niet gevonden als geen enkele bron het adres kent', async () => {
+    await assert.rejects(fetchFromSources([empty, empty]), /Adres niet gevonden/);
+  });
+
+  it('meldt adres niet gevonden met foutdetail als één bron faalt en de ander het adres niet kent', async () => {
+    await assert.rejects(
+      fetchFromSources([fail('API-fout: HTTP 500'), empty]),
+      { message: 'Adres niet gevonden. Controleer postcode en huisnummer. (API-fout: HTTP 500)' }
+    );
+  });
+
+  it('geeft de eerste fout door als alle bronnen falen', async () => {
+    await assert.rejects(fetchFromSources([fail('Timeout na 15000ms'), fail('HTTP 502')]), { message: 'Timeout na 15000ms' });
+  });
+
+  it('geeft argumenten door aan elke bron', async () => {
+    const seen = [];
+    const spy = async (...args) => { seen.push(args); return { found: false, items: [] }; };
+    await assert.rejects(fetchFromSources([spy, spy], '7552NS', '28', 'A'));
+    assert.deepEqual(seen, [['7552NS', '28', 'A'], ['7552NS', '28', 'A']]);
+  });
+});
