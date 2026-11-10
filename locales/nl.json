@@ -1,22 +1,44 @@
 {
   "pair": {
     "search": {
-      "title": "Adres toevoegen",
-      "postcode_label": "Postcode",
-      "housenumber_label": "Huisnummer",
-      "toevoeging_label": "Toevoeging (optioneel)",
+      "title": "Kliko adres toevoegen",
+      "subtitle": "Voer je adres in om de ophaalkalender op te halen. Werkt voor heel Nederland.",
       "name_label": "Naam (optioneel)",
+      "name_placeholder": "bijv. Thuis, Werk",
+      "postcode_label": "Postcode",
+      "postcode_placeholder": "bijv. 1234AB",
+      "housenumber_label": "Huisnummer",
+      "housenumber_placeholder": "bijv. 1",
+      "toevoeging_label": "Toevoeging (optioneel)",
+      "toevoeging_placeholder": "bijv. A of B",
       "next_btn": "Volgende",
+      "checking": "Adres controleren...",
       "error_required": "Vul postcode en huisnummer in.",
-      "error_not_found": "Adres niet gevonden. Controleer postcode en huisnummer."
+      "error_unknown": "Onbekende fout."
+    },
+    "confirm": {
+      "title": "Adres gevonden!",
+      "text": "Klik op 'Volgende' om het adres toe te voegen aan Homey."
     }
+  },
+  "errors": {
+    "address_not_found": "Adres niet gevonden. Controleer postcode en huisnummer.",
+    "lookup_failed": "De ophaalkalender kon niet worden opgehaald: __error__"
+  },
+  "warnings": {
+    "refresh_failed": "Kalender kon niet worden ververst: __error__"
+  },
+  "widget": {
+    "loading": "Laden...",
+    "today": "Vandaag",
+    "tomorrow": "Morgen",
+    "no_data": "Geen data beschikbaar.",
+    "no_devices": "Geen kliko adres gevonden. Voeg eerst een adres toe via Apparaten.",
+    "error": "Fout: __error__"
   },
   "settings": {
     "refresh_interval": {
       "label": "Verversingsinterval"
     }
-  },
-  "warnings": {
-    "refresh_failed": "Kalender kon niet worden ververst: __error__"
   }
 }

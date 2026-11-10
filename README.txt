@@ -1,17 +1,3 @@
-Kliko Calendar shows your trash collection schedule for the next 7 days, based on your address. Works for all addresses in the Netherlands.
+Kliko Calendar shows which waste containers are collected at your address today and tomorrow, and gives you a seven-day overview on your Homey dashboard. It works for addresses throughout the Netherlands: just enter your postal code and house number.
 
-Add your address via Devices to see which containers (GFT, PMD, paper, residual waste) are collected today and tomorrow. Use the widget on your Homey dashboard for a quick overview, and set up Flows to get notified on collection days.
-
-What makes Kliko Calendar different? You can add multiple addresses — each as its own tile in Homey with separate notifications and automations. Perfect if you live on a corner where your bins can be collected from either side, or if you want to track collection at multiple properties.
-
-Example flow: daily collection reminders
-
-Morning (8:00 AM):
-  When: Time is 8:00 AM
-  And:  Collection today is Yes → [device]
-  Then: Send a notification → "Collected today: [Collection types today]"
-
-Evening (8:00 PM):
-  When: Time is 8:00 PM
-  And:  Collection tomorrow is Yes → [device]
-  Then: Send a notification → "Collected tomorrow: [Collection types tomorrow]"
+You can add multiple addresses, each as its own device with separate notifications and automations. That is handy if your bins can be collected on either side of a corner house, or if you look after more than one property. Use Flows to get a reminder the evening before or the morning of collection day, so you never forget to put the bin out again.

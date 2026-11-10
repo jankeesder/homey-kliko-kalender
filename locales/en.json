@@ -1,22 +1,44 @@
 {
   "pair": {
     "search": {
-      "title": "Add address",
-      "postcode_label": "Postal code",
-      "housenumber_label": "House number",
-      "toevoeging_label": "House number addition (optional)",
+      "title": "Add Kliko address",
+      "subtitle": "Enter your address to fetch the waste collection calendar. Works for all of the Netherlands.",
       "name_label": "Name (optional)",
+      "name_placeholder": "e.g. Home, Work",
+      "postcode_label": "Postal code",
+      "postcode_placeholder": "e.g. 1234AB",
+      "housenumber_label": "House number",
+      "housenumber_placeholder": "e.g. 1",
+      "toevoeging_label": "House number addition (optional)",
+      "toevoeging_placeholder": "e.g. A or B",
       "next_btn": "Next",
+      "checking": "Checking address...",
       "error_required": "Please fill in postal code and house number.",
-      "error_not_found": "Address not found. Check postal code and house number."
+      "error_unknown": "Unknown error."
+    },
+    "confirm": {
+      "title": "Address found!",
+      "text": "Click 'Next' to add the address to Homey."
     }
+  },
+  "errors": {
+    "address_not_found": "Address not found. Check postal code and house number.",
+    "lookup_failed": "The collection calendar could not be fetched: __error__"
+  },
+  "warnings": {
+    "refresh_failed": "Calendar could not be refreshed: __error__"
+  },
+  "widget": {
+    "loading": "Loading...",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "no_data": "No data available.",
+    "no_devices": "No Kliko address found. Add an address via Devices first.",
+    "error": "Error: __error__"
   },
   "settings": {
     "refresh_interval": {
       "label": "Refresh interval"
     }
-  },
-  "warnings": {
-    "refresh_failed": "Calendar could not be refreshed: __error__"
   }
 }

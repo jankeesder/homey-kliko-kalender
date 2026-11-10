@@ -38,7 +38,7 @@ async function load() {
     _allCalendars = await _homey.api('GET', '/calendar');
     render();
   } catch (err) {
-    list.innerHTML = `<div class="loading">Fout: ${err.message}</div>`;
+    list.innerHTML = `<div class="loading">${_homey.__('widget.error', { error: err.message })}</div>`;
     _signalReady();
   }
 }
@@ -55,7 +55,7 @@ function render() {
   const entries = Object.values(_allCalendars);
 
   if (entries.length === 0) {
-    list.innerHTML = '<div class="loading">Geen data beschikbaar.</div>';
+    list.innerHTML = `<div class="loading">${_homey.__('widget.no_data')}</div>`;
     _signalReady();
     return;
   }
@@ -108,7 +108,7 @@ async function init() {
     const devices = await _homey.api('GET', '/devices');
 
     if (!devices || devices.length === 0) {
-      list.innerHTML = '<div class="loading">Geen kliko adres gevonden. Voeg eerst een adres toe via Apparaten.</div>';
+      list.innerHTML = `<div class="loading">${_homey.__('widget.no_devices')}</div>`;
       _signalReady();
       return;
     }
@@ -119,7 +119,7 @@ async function init() {
 
     load();
   } catch (err) {
-    list.innerHTML = `<div class="loading">Fout: ${err.message}</div>`;
+    list.innerHTML = `<div class="loading">${_homey.__('widget.error', { error: err.message })}</div>`;
     _signalReady();
   }
 }

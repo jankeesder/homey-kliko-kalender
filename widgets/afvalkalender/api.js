@@ -7,7 +7,13 @@ function getDevices(homey) {
   return homey.drivers.getDriver('afval-adres').getDevices();
 }
 
-function buildDays(calendar, timeZone) {
+const DAY_NAMES = {
+  en: { days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] },
+  nl: { days: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'], months: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'] },
+};
+
+function buildDays(homey, calendar, timeZone) {
+  const names = DAY_NAMES[homey.i18n.getLanguage()] || DAY_NAMES.en;
   const days = [];
 
   for (let i = 0; i < 7; i++) {
@@ -15,7 +21,7 @@ function buildDays(calendar, timeZone) {
     const types   = getCollectionsForDate(calendar, dateStr);
     days.push({
       dateStr,
-      dayLabel: i === 0 ? 'Vandaag' : i === 1 ? 'Morgen' : _dutchDayLabel(dateStr),
+      dayLabel: i === 0 ? homey.__('widget.today') : i === 1 ? homey.__('widget.tomorrow') : _dayLabel(dateStr, names),
       types,
       hasCollection: types.length > 0,
     });
@@ -41,7 +47,7 @@ module.exports = {
       const calendar = device.getStoreValue('calendar') || {};
       result[key] = {
         deviceName: device.getName(),
-        days: buildDays(calendar, timeZone),
+        days: buildDays(homey, calendar, timeZone),
       };
     }
 
@@ -49,9 +55,7 @@ module.exports = {
   },
 };
 
-function _dutchDayLabel(dateStr) {
-  const date   = new Date(`${dateStr}T12:00:00Z`);
-  const days   = ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'];
-  const months = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+function _dayLabel(dateStr, { days, months }) {
+  const date = new Date(`${dateStr}T12:00:00Z`);
   return `${days[date.getUTCDay()]} ${date.getUTCDate()} ${months[date.getUTCMonth()]}`;
 }

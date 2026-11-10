@@ -2,6 +2,7 @@
 
 const Homey    = require('homey');
 const trashApi = require('../../lib/trashapi');
+const { userMessage } = require('../../lib/errors');
 
 class AfvalAdresDriver extends Homey.Driver {
   async onPair(session) {
@@ -24,7 +25,7 @@ class AfvalAdresDriver extends Homey.Driver {
         return { success: true };
       } catch (err) {
         this.error('Address validation failed:', err.message);
-        return { success: false, error: err.message };
+        return { success: false, error: userMessage(this.homey, err) };
       }
     });
 

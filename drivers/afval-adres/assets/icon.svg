@@ -1,13 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960">
-  <!-- Hinge tab top-right of lid -->
-  <rect x="652" y="95" width="46" height="50" rx="13" fill="#000000"/>
-  <!-- Lid (slightly wider than body) -->
-  <rect x="300" y="140" width="360" height="98" rx="30" fill="#000000"/>
-  <!-- Body: h/w ratio ~1.8 (310w × 555h) -->
-  <rect x="325" y="232" width="310" height="555" rx="18" fill="#000000"/>
-  <!-- Lid rail slots (white cutouts at top of body) -->
-  <rect x="412" y="232" width="24" height="88" fill="#ffffff"/>
-  <rect x="504" y="232" width="24" height="88" fill="#ffffff"/>
-  <!-- Wheel: bottom-right (hinge side), flush with body bottom, sticks out right -->
-  <circle cx="618" cy="712" r="75" fill="#000000"/>
+  <g fill="none" stroke="#000000" stroke-width="40" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Lid, seen from the right side, with a small front lip -->
+    <path d="M170 290 L170 230 L740 230"/>
+    <!-- Handle at the back of the lid -->
+    <path d="M740 230 Q800 230 815 160"/>
+    <!-- Body: front tapers towards the bottom, back edge stays straight above the wheel -->
+    <path d="M210 230 L270 790 Q274 830 314 830 L560 830"/>
+    <path d="M700 230 L700 660"/>
+    <!-- Rim below the lid -->
+    <path d="M222 340 L700 340"/>
+    <!-- Wheel with axle at the bottom rear -->
+    <circle cx="660" cy="760" r="90"/>
+    <circle cx="660" cy="760" r="18"/>
+  </g>
 </svg>

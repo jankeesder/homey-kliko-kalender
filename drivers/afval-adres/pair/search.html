@@ -16,24 +16,24 @@
   </style>
 </head>
 <body>
-  <h3>🗑 Kliko adres toevoegen</h3>
-  <p class="subtitle">Voer uw adres in om de ophaalkalender op te halen. Werkt voor heel Nederland.</p>
+  <h3>🗑 <span data-i18n="pair.search.title"></span></h3>
+  <p class="subtitle" data-i18n="pair.search.subtitle"></p>
 
-  <label for="label">Naam (optioneel)</label>
-  <input type="text" id="label" placeholder="bijv. Thuis, Werk" />
+  <label for="label" data-i18n="pair.search.name_label"></label>
+  <input type="text" id="label" data-placeholder="pair.search.name_placeholder" />
 
-  <label for="postcode">Postcode</label>
-  <input type="text" id="postcode" placeholder="bijv. 1234AB" maxlength="7" />
+  <label for="postcode" data-i18n="pair.search.postcode_label"></label>
+  <input type="text" id="postcode" data-placeholder="pair.search.postcode_placeholder" maxlength="7" />
 
-  <label for="huisnummer">Huisnummer</label>
-  <input type="text" id="huisnummer" placeholder="bijv. 1" maxlength="10" />
+  <label for="huisnummer" data-i18n="pair.search.housenumber_label"></label>
+  <input type="text" id="huisnummer" data-placeholder="pair.search.housenumber_placeholder" maxlength="10" />
 
-  <label for="toevoeging">Toevoeging (optioneel)</label>
-  <input type="text" id="toevoeging" placeholder="bijv. A of B" maxlength="10" />
+  <label for="toevoeging" data-i18n="pair.search.toevoeging_label"></label>
+  <input type="text" id="toevoeging" data-placeholder="pair.search.toevoeging_placeholder" maxlength="10" />
 
-  <button id="nextBtn">Volgende</button>
+  <button id="nextBtn" data-i18n="pair.search.next_btn"></button>
   <div class="error" id="errorMsg"></div>
-  <div class="spinner" id="spinner">Adres controleren...</div>
+  <div class="spinner" id="spinner" data-i18n="pair.search.checking"></div>
 
   <script type="application/javascript">
     var homeyInstance = null;
@@ -41,6 +41,10 @@
     function initPair(Homey) {
       if (homeyInstance) return;
       homeyInstance = Homey;
+      // data-i18n vult alleen tekst; placeholders zetten we zelf
+      document.querySelectorAll('[data-placeholder]').forEach(function(el) {
+        el.placeholder = Homey.__(el.getAttribute('data-placeholder'));
+      });
       try { Homey.ready(); } catch(e) {}
 
       var btn      = document.getElementById('nextBtn');
@@ -56,7 +60,7 @@
         errorEl.style.display = 'none';
 
         if (!postcode || !huisnummer) {
-          errorEl.textContent   = 'Vul postcode en huisnummer in.';
+          errorEl.textContent   = Homey.__('pair.search.error_required');
           errorEl.style.display = 'block';
           return;
         }
@@ -69,14 +73,14 @@
             if (result && result.success) {
               Homey.showView('confirm');
             } else {
-              errorEl.textContent   = (result && result.error) || 'Adres niet gevonden.';
+              errorEl.textContent   = (result && result.error) || Homey.__('errors.address_not_found');
               errorEl.style.display = 'block';
               btn.disabled          = false;
               spinner.style.display = 'none';
             }
           })
           .catch(function(err) {
-            errorEl.textContent   = (err && err.message) || 'Onbekende fout.';
+            errorEl.textContent   = (err && err.message) || Homey.__('pair.search.error_unknown');
             errorEl.style.display = 'block';
             btn.disabled          = false;
             spinner.style.display = 'none';

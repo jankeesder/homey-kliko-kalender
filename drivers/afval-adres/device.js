@@ -3,6 +3,7 @@
 const Homey    = require('homey');
 const trashApi = require('../../lib/trashapi');
 const { localDateString, msUntilNextLocalTime } = require('../../lib/localtime');
+const { errorDetail } = require('../../lib/errors');
 
 class AfvalAdresDevice extends Homey.Device {
 
@@ -47,7 +48,7 @@ class AfvalAdresDevice extends Homey.Device {
       this.log(`Calendar refreshed for ${this.getName()}`);
     } catch (err) {
       this.error(`refreshData failed for ${this.getName()}: ${err.message}`);
-      await this.setWarning(this.homey.__('warnings.refresh_failed', { error: err.message })).catch(this.error);
+      await this.setWarning(this.homey.__('warnings.refresh_failed', { error: errorDetail(this.homey, err) })).catch(this.error);
     }
   }
 

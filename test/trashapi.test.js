@@ -140,22 +140,22 @@ describe('fetchFromSources', () => {
   });
 
   it('valt terug op de volgende bron als de eerste faalt', async () => {
-    assert.deepEqual(await fetchFromSources([fail('Timeout na 15000ms'), ok([])]), []);
+    assert.deepEqual(await fetchFromSources([fail('Timeout after 15000ms'), ok([])]), []);
   });
 
   it('meldt adres niet gevonden als geen enkele bron het adres kent', async () => {
-    await assert.rejects(fetchFromSources([empty, empty]), /Adres niet gevonden/);
+    await assert.rejects(fetchFromSources([empty, empty]), { code: 'ADDRESS_NOT_FOUND', message: 'Address not found' });
   });
 
   it('meldt adres niet gevonden met foutdetail als één bron faalt en de ander het adres niet kent', async () => {
     await assert.rejects(
-      fetchFromSources([fail('API-fout: HTTP 500'), empty]),
-      { message: 'Adres niet gevonden. Controleer postcode en huisnummer. (API-fout: HTTP 500)' }
+      fetchFromSources([fail('TrashAPI error: HTTP 500'), empty]),
+      { code: 'ADDRESS_NOT_FOUND', message: 'Address not found (TrashAPI error: HTTP 500)' }
     );
   });
 
   it('geeft de eerste fout door als alle bronnen falen', async () => {
-    await assert.rejects(fetchFromSources([fail('Timeout na 15000ms'), fail('HTTP 502')]), { message: 'Timeout na 15000ms' });
+    await assert.rejects(fetchFromSources([fail('Timeout after 15000ms'), fail('HTTP 502')]), { message: 'Timeout after 15000ms' });
   });
 
   it('geeft argumenten door aan elke bron', async () => {
