@@ -15,5 +15,8 @@
     "refresh_interval": {
       "label": "Refresh interval"
     }
+  },
+  "warnings": {
+    "refresh_failed": "Calendar could not be refreshed: __error__"
   }
 }

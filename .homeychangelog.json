@@ -1,4 +1,8 @@
 {
+  "2.0.3": {
+    "en": "Collections are now based on your Homey's local time, so \"today\" and \"tomorrow\" are correct right after midnight and the daily Flows fire at 00:01 local time. A device now shows a warning when the calendar could not be refreshed.",
+    "nl": "Ophalingen gaan nu uit van de lokale tijd van je Homey, zodat \"vandaag\" en \"morgen\" ook direct na middernacht kloppen en de dagelijkse Flows om 00:01 lokale tijd starten. Een apparaat toont nu een waarschuwing als de kalender niet kon worden ververst."
+  },
   "2.0.2": {
     "en": "Fixed addresses in the Twente Milieu region not being found: the app now fetches the schedule directly from Twente Milieu when the general source has no data.",
     "nl": "Probleem opgelost waarbij adressen in de regio Twente Milieu niet werden gevonden: de app haalt het schema nu rechtstreeks bij Twente Milieu op als de algemene bron geen gegevens heeft."

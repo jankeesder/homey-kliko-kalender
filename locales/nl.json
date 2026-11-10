@@ -15,5 +15,8 @@
     "refresh_interval": {
       "label": "Verversingsinterval"
     }
+  },
+  "warnings": {
+    "refresh_failed": "Kalender kon niet worden ververst: __error__"
   }
 }

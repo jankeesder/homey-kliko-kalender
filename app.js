@@ -1,7 +1,7 @@
 'use strict';
 
 const Homey    = require('homey');
-const trashApi = require('./lib/trashapi');
+const { localDateString } = require('./lib/localtime');
 
 // Maps Flow dropdown IDs to the TrashAPI names used internally.
 // Stable codes (GFT, REST, PAP, PMD, KCA) are the current dropdown IDs;
@@ -35,15 +35,15 @@ class AfvalContainerApp extends Homey.App {
 
     this.homey.flow.getConditionCard('collection_type_today')
       .registerRunListener(async ({ device, type }) => {
-        const types = device.getStoreValue('calendar')?.[trashApi.toDateString(new Date())] || [];
+        const today = localDateString(this.homey.clock.getTimezone(), 0);
+        const types = device.getStoreValue('calendar')?.[today] || [];
         return types.includes(normalizeType(type));
       });
 
     this.homey.flow.getConditionCard('collection_type_tomorrow')
       .registerRunListener(async ({ device, type }) => {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const types = device.getStoreValue('calendar')?.[trashApi.toDateString(tomorrow)] || [];
+        const tomorrow = localDateString(this.homey.clock.getTimezone(), 1);
+        const types = device.getStoreValue('calendar')?.[tomorrow] || [];
         return types.includes(normalizeType(type));
       });
 

@@ -2,6 +2,7 @@
 
 const Homey    = require('homey');
 const trashApi = require('../../lib/trashapi');
+const { localDateString, msUntilNextLocalTime } = require('../../lib/localtime');
 
 class AfvalAdresDevice extends Homey.Device {
 
@@ -42,19 +43,18 @@ class AfvalAdresDevice extends Homey.Device {
       const calendar = await trashApi.fetchCalendar(postcode, huisnummer, toevoeging, 7);
       await this.setStoreValue('calendar', calendar);
       await this._updateCapabilities(calendar, false);
+      await this.unsetWarning().catch(this.error);
       this.log(`Calendar refreshed for ${this.getName()}`);
     } catch (err) {
       this.error(`refreshData failed for ${this.getName()}: ${err.message}`);
+      await this.setWarning(this.homey.__('warnings.refresh_failed', { error: err.message })).catch(this.error);
     }
   }
 
   async _updateCapabilities(calendar, fireTriggers) {
-    const now      = new Date();
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
-    const todayStr    = trashApi.toDateString(now);
-    const tomorrowStr = trashApi.toDateString(tomorrow);
+    const tz          = this.homey.clock.getTimezone();
+    const todayStr    = localDateString(tz, 0);
+    const tomorrowStr = localDateString(tz, 1);
 
     const todayTypes    = trashApi.getCollectionsForDate(calendar, todayStr);
     const tomorrowTypes = trashApi.getCollectionsForDate(calendar, tomorrowStr);
@@ -90,16 +90,19 @@ class AfvalAdresDevice extends Homey.Device {
 
   _scheduleMidnight() {
     if (this._midnightTimer) this.homey.clearTimeout(this._midnightTimer);
-    const now      = new Date();
-    const midnight = new Date(now);
-    midnight.setDate(midnight.getDate() + 1);
-    midnight.setHours(0, 1, 0, 0);
+    // 00:01 lokale tijd (Homey-apps draaien in UTC)
+    const ms = msUntilNextLocalTime(this.homey.clock.getTimezone(), 0, 1);
 
     this._midnightTimer = this.homey.setTimeout(async () => {
-      const calendar = this.getStoreValue('calendar') || {};
-      await this._updateCapabilities(calendar, true);
-      this._scheduleMidnight();
-    }, midnight - now);
+      try {
+        const calendar = this.getStoreValue('calendar') || {};
+        await this._updateCapabilities(calendar, true);
+      } catch (err) {
+        this.error('Midnight update failed:', err.message);
+      } finally {
+        this._scheduleMidnight();
+      }
+    }, ms);
   }
 
 }
